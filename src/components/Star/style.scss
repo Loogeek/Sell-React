@@ -1,0 +1,78 @@
+@import '../../../static/css/mixin.scss';
+
+.star {
+    font-size: 0;
+
+    &-item {
+        display: inline-block;
+    }
+}
+
+.star-48 {
+    .star-item {
+        width: 20px;
+        height: 20px;
+        margin-right: 22px;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.on {
+            @include bg-image('./images/star48_on');
+        }
+
+        &.half {
+            @include bg-image('./images/star48_half');
+        }
+
+        &.off {
+            @include bg-image('./images/star48_off');
+        }
+    }
+}
+
+.star-36 {
+    .star-item {
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.on {
+            @include bg-image('./images/star36_on');
+        }
+
+        &.half {
+            @include bg-image('./images/star36_half');
+        }
+
+        &.off {
+            @include bg-image('./images/star36_off');
+        }
+    }
+}
+
+.star-24 {
+    .star-item {
+        width: 10px;
+        height: 10px;
+        margin-right: 3px;
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.on {
+            @include bg-image('./images/star24_on');
+        }
+
+        &.half {
+            @include bg-image('./images/star24_half');
+        }
+
+        &.off {
+            @include bg-image('./images/star24_off');
+        }
+    }
+}

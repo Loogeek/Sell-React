@@ -1,0 +1,43 @@
+@mixin border-bottom-1px($color) {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border-top: 1px solid $color;
+        content: '';
+    }
+}
+@mixin border-top-1px($color) {
+    position: relative;
+    &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border-top: 1px solid $color;
+        content: '';
+    }
+}
+@mixin border-none() {
+    &:after {
+        display: none;
+    }
+}
+
+@mixin bg-image($url) {
+    background: url($url + "@2x.png") no-repeat center;
+    background-size: 100%;
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+        background: url($url + "@3x.png") no-repeat center;
+        background-size: 100%;
+    }
+}
+
+@mixin ellipsis() {
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
