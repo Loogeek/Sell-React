@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../Header';
+import { Link } from 'react-router';
 import './style.scss';
 
 export default class Seller extends React.Component {
@@ -34,6 +35,17 @@ export default class Seller extends React.Component {
         return (
             <div className="sell-wrapper">
                 <Header seller={seller}></Header>
+                <ul className="nav">
+                    <li className="nav-item">
+                        <Link to="/goods">商品</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/ratings">评价</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/seller">商家</Link>
+                    </li>
+                </ul>
             </div>
         );
     }

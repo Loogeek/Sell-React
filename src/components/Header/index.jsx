@@ -1,12 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import Star from 'components/Star';
+import SupportIcon from 'components/SupportIcon';
 import './style.scss';
 
 export default class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'];
         this.state = {
             showDetail: false
         };
@@ -35,7 +35,7 @@ export default class Header extends React.Component {
                         </div>
                         <div className="des">{seller.description}/{seller.deliveryTime}分钟送达</div>
                         <div className="supports">
-                            <i className="support-icon"></i>
+                            <SupportIcon type={seller.supports && seller.supports[0].type} />
                             <span className="support-des">{seller.supports && seller.supports[0].description}</span>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ export default class Header extends React.Component {
                                 seller.supports && seller.supports.map(item => {
                                     return (
                                         <li className="support-item" key={item.type}>
-                                            <i className={classnames('support-item-icon', this.classMap[item.type])}></i>
+                                            <SupportIcon type={item.type}/>
                                             <span className="text">{item.description}</span>
                                         </li>
                                     );

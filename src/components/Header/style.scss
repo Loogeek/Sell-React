@@ -60,17 +60,13 @@
                 font-weight: 200;
 
                 .support-icon {
-                     @include bg-image('./images/decrease_1');
-                     display: inline-block;
                      width: 12px;
                      height: 12px;
-                     vertical-align: top;
                 }
 
                 .support-des {
                     height: 12px;
                     line-height: 12px;
-                    margin-left: 4px;
                     font-size: 1rem;
                     font-weight: 100;
                 }
@@ -157,6 +153,7 @@
         overflow: auto;
         opacity: 0;
         visibility: hidden;
+        backdrop-filter: blur(10px);
         background-color: rgba(7, 17, 27, 0.8);
         padding: 64px 36px 0;
         color: #fff;
@@ -209,34 +206,6 @@
                     padding: 0 12px;
                     margin-bottom: 12px;
                     font-size: 0;
-
-                    &-icon {
-                        display: inline-block;
-                        width: 16px;
-                        height: 16px;
-                        vertical-align: top;
-                        margin-right: 4px;
-                    }
-
-                    .decrease {
-                        @include bg-image('./images/decrease_2');
-                    }
-
-                    .discount {
-                        @include bg-image('./images/discount_2');
-                    }
-
-                    .special {
-                        @include bg-image('./images/special_2');
-                    }
-
-                    .invoice {
-                        @include bg-image('./images/invoice_2');
-                    }
-
-                    .guarantee {
-                        @include bg-image('./images/guarantee_2');
-                    }
 
                     .text {
                         line-height: 16px;
