@@ -1,3 +1,4 @@
+@import '../../../static/css/mixin.scss';
 
 .goods {
     display: flex;
@@ -18,18 +19,102 @@
             line-height: 14px;
             font-size: 1.2rem;
             padding: 0 12px;
-            box-sizing: border-box;
 
             .name {
                 display: table-cell;
                 vertical-align: middle;
                 width: 56px;
                 color: #07111b;
+                @include border-bottom-1px(rgba(7, 17, 27, 0.1));
             }
         }
     }
 
     &-detail {
         flex: 1;
+
+        &-good {
+            .title {
+                padding-left: 14px;
+                height: 26px;
+                line-height: 26px;
+                border-left: 2px solid #d9dde1;
+                font-size: 1.2rem;
+                color: rgb(147, 153, 159);
+                background-color: #f3f5f7;
+            }
+
+            &-item {
+                display: flex;
+                margin: 18px;
+                padding-bottom: 18px;
+                @include border-bottom-1px(rgba(7, 17, 27, 0.1));
+
+                &:last-child {
+                    margin-bottom: 0;
+                    @include border-none();
+                }
+
+                .item-thumail {
+                    width: 57px;
+                    height: 57px;
+                    flex: 0 0 57px;
+                    margin-right: 10px;
+
+                    & > img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 2px;
+                    }
+                }
+
+                .item-content {
+                    flex: 1;
+
+                    &-name {
+                        margin: 2px 0 8px 0;
+                        height: 14px;
+                        line-height: 14px;
+                        font-size: 1.4rem;
+                        color: rgb(7, 17, 27);
+                    }
+
+                    &-desc, &-extra {
+                        line-height: 10px;
+                        font-size: 1rem;
+                        color: rgb(147, 153, 159);
+                    }
+
+                    &-desc {
+                        line-height: 12px;
+                        margin-bottom: 8px;
+                    }
+
+                    &-extra {
+
+                        &-count {
+                            margin-right: 12px;
+                        }
+                    }
+
+                    &-price {
+                        font-weight: 700;
+                        line-height: 24px;
+
+                        .now {
+                            margin-right: 8px;
+                            font-size: 1.4rem;
+                            color: rgb(240, 20, 20);
+                        }
+
+                        .old {
+                            text-decoration: line-through;
+                            font-size: 1rem;
+                            color: rgb(147, 153, 159);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

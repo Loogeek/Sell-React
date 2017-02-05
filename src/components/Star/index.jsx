@@ -11,8 +11,8 @@ export default class Star extends React.Component {
         this.CLS_OFF = 'off';
     }
 
-    renderStar() {
-        const { score } = this.props;
+    render() {
+        const { starType, score } = this.props;
         const starScore = Math.floor(score * 2) / 2;
         const hasDecimal = starScore % 1 !== 0;
         const integer = Math.floor(starScore);
@@ -29,21 +29,13 @@ export default class Star extends React.Component {
         }
 
         return (
-            scoreResult.map((itemClass, index) => {
-                return (
-                    <span className={classnames('star-item', itemClass)} key={index}></span>
-                );
-            })
-        );
-    }
-
-    render() {
-        const { starType } = this.props;
-
-        return (
             <div className={classnames('star', 'star-' + starType)}>
                 {
-                    this.renderStar()
+                    scoreResult.map((itemClass, index) => {
+                        return (
+                            <span className={classnames('star-item', itemClass)} key={index}></span>
+                        );
+                    })
                 }
             </div>
         );
