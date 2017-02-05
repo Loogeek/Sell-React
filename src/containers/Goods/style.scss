@@ -1,0 +1,35 @@
+
+.goods {
+    display: flex;
+    position: absolute;
+    top: 174px;
+    bottom: 46px;
+    width: 100%;
+    overflow: hidden;
+
+    &-menu {
+        flex: 0 0 80px;
+        width: 80px;
+        background-color: #f3f5f7;
+
+        &-item {
+            display: table;
+            height: 54px;
+            line-height: 14px;
+            font-size: 1.2rem;
+            padding: 0 12px;
+            box-sizing: border-box;
+
+            .name {
+                display: table-cell;
+                vertical-align: middle;
+                width: 56px;
+                color: #07111b;
+            }
+        }
+    }
+
+    &-detail {
+        flex: 1;
+    }
+}

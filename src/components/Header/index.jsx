@@ -35,7 +35,7 @@ export default class Header extends React.Component {
                         </div>
                         <div className="des">{seller.description}/{seller.deliveryTime}分钟送达</div>
                         <div className="supports">
-                            <SupportIcon type={seller.supports && seller.supports[0].type} />
+                            <SupportIcon cls={1} type={seller.supports && seller.supports[0].type} />
                             <span className="support-des">{seller.supports && seller.supports[0].description}</span>
                         </div>
                     </div>
@@ -67,7 +67,7 @@ export default class Header extends React.Component {
                                 seller.supports && seller.supports.map(item => {
                                     return (
                                         <li className="support-item" key={item.type}>
-                                            <SupportIcon type={item.type}/>
+                                            <SupportIcon cls={2} type={item.type} />
                                             <span className="text">{item.description}</span>
                                         </li>
                                     );

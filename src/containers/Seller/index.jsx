@@ -1,6 +1,7 @@
 import React from 'react';
-import Header from '../Header';
 import { Link } from 'react-router';
+import Header from 'components/Header';
+import Goods from 'containers/Goods';
 import './style.scss';
 
 export default class Seller extends React.Component {
@@ -46,6 +47,7 @@ export default class Seller extends React.Component {
                         <Link to="/seller">商家</Link>
                     </li>
                 </ul>
+                <Goods />
             </div>
         );
     }

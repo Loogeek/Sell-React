@@ -1,6 +1,34 @@
 @import '../../../static/css/mixin.scss';
 
-.support-icon {
+.support-icon-1 {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: top;
+    margin-right: 2px;
+
+    &.decrease {
+        @include bg-image('./images/decrease_1');
+    }
+
+    &.discount {
+        @include bg-image('./images/discount_1');
+    }
+
+    &.special {
+        @include bg-image('./images/special_1');
+    }
+
+    &.invoice {
+        @include bg-image('./images/invoice_1');
+    }
+
+    &.guarantee {
+        @include bg-image('./images/guarantee_1');
+    }
+}
+
+.support-icon-2 {
     display: inline-block;
     width: 16px;
     height: 16px;

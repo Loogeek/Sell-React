@@ -9,10 +9,10 @@ export default class SupportIcon extends React.Component {
     }
 
     render() {
-        const { type } = this.props;
+        const { cls, type } = this.props;
 
         return (
-            <i className={classnames('support-icon', this.classMap[type])}></i>
+            <i className={classnames(`support-icon-${cls}`, this.classMap[type])}></i>
         );
     }
 }

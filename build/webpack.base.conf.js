@@ -1,13 +1,13 @@
-var path = require('path')
-var config = require('../config')
-var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
+var path = require('path');
+var config = require('../config');
+var utils = require('./utils');
+var projectRoot = path.resolve(__dirname, '../');
 
-var env = process.env.NODE_ENV
+var env = process.env.NODE_ENV;
 // check env & config/index.js to decide weither to enable CSS Sourcemaps for the
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap);
+var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap);
+var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
 
 module.exports = {
   entry: {
@@ -24,7 +24,8 @@ module.exports = {
     alias: {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components')
+      'components': path.resolve(__dirname, '../src/components'),
+      'containers': path.resolve(__dirname, '../src/containers')
     }
   },
   resolveLoader: {
@@ -81,14 +82,14 @@ module.exports = {
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [
-      autoprefixer({
+      require('autoprefixer')({
         browsers: [
           '>1%',
           'last 4 versions',
           'Firefox ESR',
-          'not ie < 9', // React doesn't support IE8 anyway
+          'not ie < 9' // React doesn't support IE8 anyway
         ]
-      }),
+      })
     ];
-  },
-}
+  }
+};
