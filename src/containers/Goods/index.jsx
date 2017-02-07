@@ -1,6 +1,7 @@
 import React from 'react';
 import SupportIcon from 'components/SupportIcon';
 import BScroll from 'better-scroll';
+import classnames from 'classnames';
 import './style.scss';
 
 export default class Goods extends React.Component {
@@ -8,8 +9,10 @@ export default class Goods extends React.Component {
         super(props);
         this.state = {
             goods: [],
+            menuIndex: 0,
             loading: true
         };
+        this.goodListHeight = [0];
     }
 
     componentWillMount() {
@@ -22,22 +25,64 @@ export default class Goods extends React.Component {
                     loading: false
                 });
                 this.initScroll();
+                this.calculateHeight();
             }
         });
     }
 
     initScroll() {
         this.goodsMenu = new BScroll(this.refs.goodsMenu, {
-            // click: true
+            click: true                                   // 在PC端启用click事件
         });
 
         this.goodsDetail = new BScroll(this.refs.goodsDetail, {
-            // click: true
+            click: true,
+            probeType: 3
+        });
+
+        this.goodsDetail.on('scroll', (pos) => {
+            this.scrollY = Math.abs(Math.round(pos.y));
+            const index = this.calculateCurrentIndex();
+
+            if (this.state.menuIndex !== index) {
+                this.setState({
+                    menuIndex: index
+                });
+            }
         });
     }
 
+    calculateHeight() {
+        let height = 0;
+        const aGoodsList = Array.from(this.refs.goodsDetail.querySelectorAll('.goods-detail-good'));
+
+        aGoodsList.map(item => {
+            height += item.clientHeight;
+            this.goodListHeight.push(height);
+        });
+    }
+
+    calculateCurrentIndex() {
+        for (let i = 0; i < this.goodListHeight.length; i++) {
+            const height1 = this.goodListHeight[i];
+            const height2 = this.goodListHeight[i + 1];
+
+            if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    selectMenu(index) {
+        if (index !== this.state.menuIndex) {
+            const aGoodsList = this.refs.goodsDetail.querySelectorAll('.goods-detail-good');
+            this.goodsDetail.scrollToElement(aGoodsList[index], 300);
+        }
+    }
+
     render() {
-        const { goods } = this.state;
+        const { goods, menuIndex } = this.state;
 
         return (
             <div className="goods">
@@ -46,7 +91,7 @@ export default class Goods extends React.Component {
                         {
                             goods.map((item, index) => {
                                 return (
-                                    <li className="goods-menu-item" key={index}>
+                                    <li className={classnames('goods-menu-item', {'current': menuIndex === index})} key={index} onClick={this.selectMenu.bind(this, index)}>
                                         <span className="name">
                                             {
                                                 item.type > 0 ? <SupportIcon type={item.type} cls={1} /> : null
