@@ -1,5 +1,6 @@
 import React from 'react';
 import SupportIcon from 'components/SupportIcon';
+import ShoppingCart from 'components/ShoppingCart';
 import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
@@ -143,6 +144,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
+                    <ShoppingCart />
                 </section>
             </div>
         );
