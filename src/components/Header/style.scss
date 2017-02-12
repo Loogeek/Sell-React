@@ -6,7 +6,7 @@
     background-color: rgba(7, 17, 27, 0.5);
     color: #fff;
 
-    .header-goods {
+    &-goods {
         display: flex;
         padding: 24px 12px 18px 24px;
         position: relative;
@@ -92,7 +92,7 @@
         }
     }
 
-    .header-notice {
+    &-notice {
         @include ellipsis;
         position: relative;
         display: inline-block;
@@ -124,7 +124,7 @@
         }
     }
 
-    .header-bg {
+    &-bg {
         position: absolute;
         top: 0;
         left: 0;
@@ -138,9 +138,9 @@
         }
     }
 
-    .header-detail {
+    &-detail {
         position: fixed;
-        z-index: 100;
+        z-index: 1000;
         top: 0;
         left: 0;
         width: 100%;

@@ -1,0 +1,41 @@
+.cart-control {
+    line-height: 24px;
+
+    &-decrease, &-increase {
+        display: inline-block;
+        padding: 6px;
+        font-size: 2.4rem;
+        color: rgb(0, 160, 220);
+
+    }
+
+    &-decrease {
+        opacity: 0;
+        transform: translate3d(36px, 0, 0);
+        transition: all, .4s linear;
+    }
+
+    .active {
+        opacity: 1;
+        transform: rotate(180deg) translate3d(0, 0, 0);
+    }
+
+    &-increase {
+        position: relative;
+    }
+
+    &-count {
+        display: inline-block;
+        vertical-align: top;
+        width: 12px;
+        padding-top: 6px;
+        text-align: center;
+        font-size: 1rem;
+        color: rgb(147, 153, 159);
+        opacity: 0;
+    }
+
+    .active-count {
+        opacity: 1;
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
+import CartControl from 'components/CartControl';
 import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
@@ -11,6 +12,9 @@ export default class Goods extends React.Component {
         this.state = {
             goods: [],
             menuIndex: 0,
+            selectFood: [],
+            deliveryPrice: 0,
+            minPrice: 0,
             loading: true
         };
         this.goodListHeight = [0];
@@ -82,8 +86,24 @@ export default class Goods extends React.Component {
         }
     }
 
+    // selectFoods() {
+    //     const { goods } = this.state;
+    //     let aSelectFoods = [];
+    //     // const { selectFoods } = this.state;
+    //
+    //     goods.map(good => {
+    //         good.foods.map(food => {
+    //             if (food.count > 0) {
+    //                 aSelectFoods.push(food);
+    //             }
+    //         });
+    //     });
+    //     console.log(aSelectFoods);
+    // }
+
     render() {
         const { goods, menuIndex } = this.state;
+        const { seller } = this.props;
 
         return (
             <div className="goods">
@@ -114,24 +134,27 @@ export default class Goods extends React.Component {
                                         <h1 className="title">{good.name}</h1>
                                         <ul>
                                             {
-                                                good.foods.map((item, index) => {
+                                                good.foods.map((food, index) => {
                                                     return (
-                                                        <li className="goods-detail-good-item" key={index}>
-                                                            <div className="item-thumail">
-                                                                <img src={item.icon} alt={item.name} />
+                                                        <li className="goods-detail-good-food" key={index}>
+                                                            <div className="food-thumail">
+                                                                <img src={food.icon} alt={food.name} />
                                                             </div>
-                                                            <div className="item-content">
-                                                                <h2 className="item-content-name">{item.name}</h2>
-                                                                <p className="item-content-desc">{item.description}</p>
-                                                                <div className="item-content-extra">
-                                                                    <span className="item-content-extra-count">月售{item.sellCount}</span>
-                                                                    <span>好评率{item.rating}%</span>
+                                                            <div className="food-content">
+                                                                <h2 className="food-content-name">{food.name}</h2>
+                                                                <p className="food-content-desc">{food.description}</p>
+                                                                <div className="food-content-extra">
+                                                                    <span className="food-content-extra-count">月售{food.sellCount}</span>
+                                                                    <span>好评率{food.rating}%</span>
                                                                 </div>
-                                                                <div className="item-content-price">
-                                                                    <span className="now">￥{item.price}</span>
+                                                                <div className="food-content-price">
+                                                                    <span className="now">￥{food.price}</span>
                                                                     {
-                                                                        item.oldPrice ? <span className="old">￥{item.oldPrice}</span> : null
+                                                                        food.oldPrice ? <span className="old">￥{food.oldPrice}</span> : null
                                                                     }
+                                                                </div>
+                                                                <div className="food-content-cart-control">
+                                                                    <CartControl food={food} />
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -144,7 +167,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
-                    <ShoppingCart />
+                    <ShoppingCart goods={goods} seller={seller}/>
                 </section>
             </div>
         );

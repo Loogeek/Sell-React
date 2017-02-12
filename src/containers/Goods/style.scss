@@ -56,7 +56,7 @@
                 background-color: #f3f5f7;
             }
 
-            &-item {
+            &-food {
                 display: flex;
                 margin: 18px;
                 padding-bottom: 18px;
@@ -67,7 +67,7 @@
                     @include border-none();
                 }
 
-                .item-thumail {
+                .food-thumail {
                     width: 57px;
                     height: 57px;
                     flex: 0 0 57px;
@@ -80,7 +80,7 @@
                     }
                 }
 
-                .item-content {
+                .food-content {
                     flex: 1;
 
                     &-name {
@@ -124,6 +124,12 @@
                             font-size: 1rem;
                             color: rgb(147, 153, 159);
                         }
+                    }
+
+                    &-cart-control {
+                        position: absolute;
+                        right: 0;
+                        bottom: 12px;
                     }
                 }
             }

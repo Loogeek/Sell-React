@@ -3,7 +3,16 @@ import './style.scss';
 
 export default class ShoppingCart extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+
     render() {
+        const { seller } = this.props;
+
         return (
             <div className="shopping-cart">
                 <div className="shopping-cart-content">
@@ -18,7 +27,7 @@ export default class ShoppingCart extends React.Component {
                         <div className="desc">另需配送费￥元</div>
                     </div>
                     <div className="shopping-cart-content-right">
-                        <div className="pay"></div>
+                        <div className="pay">￥{seller.minPrice}元起送</div>
                     </div>
                 </div>
             </div>

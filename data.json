@@ -60,6 +60,7 @@
           "description": "咸粥",
           "sellCount": 229,
           "rating": 100,
+          "count": 0,
           "info": "一碗皮蛋瘦肉粥，总是我到粥店时的不二之选。香浓软滑，饱腹暖心，皮蛋的Q弹与瘦肉的滑嫩伴着粥香溢于满口，让人喝这样的一碗粥也觉得心满意足",
           "ratings": [
             {
@@ -94,6 +95,7 @@
           "description": "",
           "sellCount": 188,
           "rating": 96,
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -129,6 +131,7 @@
           "sellCount": 124,
           "rating": 85,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -163,6 +166,7 @@
           "sellCount": 114,
           "rating": 91,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -197,6 +201,7 @@
           "sellCount": 101,
           "rating": 78,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -230,6 +235,7 @@
           "description": "甜粥",
           "sellCount": 91,
           "rating": 100,
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -264,6 +270,7 @@
           "sellCount": 86,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -298,6 +305,7 @@
           "sellCount": 84,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -332,6 +340,7 @@
           "sellCount": 81,
           "rating": 91,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -366,6 +375,7 @@
           "sellCount": 80,
           "rating": 93,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -406,6 +416,7 @@
           "sellCount": 17,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "2******3",
@@ -432,6 +443,7 @@
           "sellCount": 15,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -465,6 +477,7 @@
           "sellCount": 43,
           "rating": 92,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -492,6 +505,7 @@
           "sellCount": 29,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -519,6 +533,7 @@
           "sellCount": 15,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -552,6 +567,7 @@
           "sellCount": 84,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -586,6 +602,7 @@
           "sellCount": 28,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -626,6 +643,7 @@
           "sellCount": 3,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "2******3",
@@ -646,6 +664,7 @@
           "sellCount": 12,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "2******3",
@@ -672,6 +691,7 @@
           "sellCount": 1,
           "rating": "",
           "info": "",
+          "count": 0,
           "ratings": [],
           "icon": "http://fuss10.elemecdn.com/b/5f/b3b04c259d5ec9fa52e1856ee50dajpeg.jpeg?imageView2/1/w/114/h/114",
           "image": "http://fuss10.elemecdn.com/b/5f/b3b04c259d5ec9fa52e1856ee50dajpeg.jpeg?imageView2/1/w/750/h/750"
@@ -684,6 +704,7 @@
           "sellCount": 7,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -718,6 +739,7 @@
           "sellCount": 15,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -751,6 +773,7 @@
           "sellCount": 188,
           "rating": 96,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -785,6 +808,7 @@
           "sellCount": 124,
           "rating": 85,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -819,6 +843,7 @@
           "sellCount": 114,
           "rating": 91,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -852,6 +877,7 @@
           "description": "",
           "sellCount": 101,
           "rating": 78,
+          "count": 0,
           "info": "",
           "ratings": [
             {
@@ -887,6 +913,7 @@
           "sellCount": 80,
           "rating": 93,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -926,6 +953,7 @@
           "description": "咸粥",
           "sellCount": 229,
           "rating": 100,
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -960,6 +988,7 @@
           "sellCount": 91,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -994,6 +1023,7 @@
           "sellCount": 86,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -1028,6 +1058,7 @@
           "sellCount": 81,
           "rating": 91,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -1062,6 +1093,7 @@
           "sellCount": 56,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",
@@ -1095,6 +1127,7 @@
           "sellCount": 33,
           "rating": 100,
           "info": "",
+          "count": 0,
           "ratings": [
             {
               "username": "3******c",

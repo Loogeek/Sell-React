@@ -47,7 +47,7 @@ export default class Seller extends React.Component {
                         <Link to="/seller">商家</Link>
                     </li>
                 </ul>
-                <Goods />
+                <Goods seller={seller}/>
             </div>
         );
     }
