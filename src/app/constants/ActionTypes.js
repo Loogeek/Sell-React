@@ -1,0 +1,1 @@
+export const FETCH_GOODS_LIST = 'FETCH_GOODS_LIST';
