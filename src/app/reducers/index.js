@@ -1,7 +1,25 @@
 import { combineReducers } from 'redux';
-import goods from './goods';
+
+const seller = (state = {}, action) => {
+    switch (action.type) {
+        case 'FETCH_SELLER_LIST':
+            return {...state, ...action.data};
+        default:
+            return state;
+    }
+};
+
+const goods = (state = [], action) => {
+    switch (action.type) {
+        case 'FETCH_GOODS_LIST':
+            return {...state, ...action.data};
+        default:
+            return state;
+    }
+};
 
 const rootReducer = combineReducers({
+    seller,
     goods
 });
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import connect from 'app/connect/index';
 import Header from 'components/Header';
 import Goods from 'containers/Goods';
 import './style.scss';
 
+@connect()
 export default class Seller extends React.Component {
     constructor(props) {
         super(props);
@@ -14,24 +16,21 @@ export default class Seller extends React.Component {
     }
 
     componentWillMount() {
-        fetch('/api/seller').then((resp) => {
-            return resp.json();
-        }).then((json) => {
-            if (json.errno === 0) {
-                this.setState({
-                    seller: json.data,
-                    loading: false
-                });
-            }
-        });
+        this.props.actions.fetchSellerList().then(() =>
+            this.setState({
+                seller: this.props.seller.data,
+                loading: false
+            })
+        );
     }
 
     render() {
         const { seller, loading } = this.state;
+        const { actions, goods } = this.props;
 
-        // if (loading) {
-        //     return;
-        // }
+        if (seller === undefined) {
+            return null;
+        }
 
         return (
             <div className="sell-wrapper">
@@ -47,7 +46,7 @@ export default class Seller extends React.Component {
                         <Link to="/seller">商家</Link>
                     </li>
                 </ul>
-                <Goods seller={seller}/>
+                <Goods seller={seller} />
             </div>
         );
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import connect from 'app/connect/index';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
 import CartControl from 'components/CartControl';
@@ -6,6 +7,7 @@ import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
 
+@connect()
 export default class Goods extends React.Component {
     constructor(props) {
         super(props);
@@ -21,17 +23,13 @@ export default class Goods extends React.Component {
     }
 
     componentWillMount() {
-        fetch('/api/goods').then((resp) => {
-            return resp.json();
-        }).then((json) => {
-            if (json.errno === 0) {
-                this.setState({
-                    goods: json.data,
-                    loading: false
-                });
-                this.initScroll();
-                this.calculateHeight();
-            }
+        this.props.actions.fetchGoodsList().then(() => {
+            this.setState({
+                goods: this.props.goods && this.props.goods.data,
+                loading: false
+            });
+            this.initScroll();
+            this.calculateHeight();
         });
     }
 
@@ -104,6 +102,10 @@ export default class Goods extends React.Component {
     render() {
         const { goods, menuIndex } = this.state;
         const { seller } = this.props;
+
+        if (goods === undefined) {
+            return null;
+        }
 
         return (
             <div className="goods">
