@@ -45,8 +45,37 @@ export default class ShoppingCart extends React.Component {
         this.totalPrice = totalPrice;
     }
 
+    renderMinPrice = () => {
+        const { seller } = this.props;
+        const minPrice = seller.data && seller.data.minPrice || 20;
+
+        switch (true) {
+            case this.totalPrice === 0:
+                return `￥${minPrice}元起送`;
+            case this.totalPrice < minPrice:
+                const diff = minPrice - this.totalPrice;
+                return `还差￥${diff}元起送`;
+            default:
+                return '去结算';
+        }
+    }
+
+    showPrice = () => {
+        const { seller } = this.props;
+        const minPrice = seller.data && seller.data.minPrice || 20;
+        const price = this.totalPrice + (seller.data && seller.data.deliveryPrice);
+
+        if (this.totalPrice < minPrice) {
+            return;
+        }
+
+        alert(`支付${price}`);
+    }
+
     render() {
         const { seller, goods } = this.props;
+        const minPrice = seller.data && seller.data.minPrice || 20;
+        const minPriceClass = this.totalPrice < minPrice ? 'not-enough' : 'enough';
 
         return (
             <div className="shopping-cart">
@@ -60,11 +89,11 @@ export default class ShoppingCart extends React.Component {
                                 this.totalCount > 0 ? <div className="logo-num">{this.totalCount}</div> : null
                             }
                         </div>
-                        <div className="total-price">￥{this.totalPrice}</div>
+                        <div className={classnames('total-price', {highlight: this.totalCount > 0})}>￥{this.totalPrice}</div>
                         <div className="desc">另需配送费￥{seller.data && seller.data.deliveryPrice}元</div>
                     </div>
-                    <div className="shopping-cart-content-right">
-                        <div className="pay">￥{seller.data && seller.data.minPrice}元起送</div>
+                    <div className="shopping-cart-content-right" onClick={this.showPrice}>
+                        <div className={classnames('pay', minPriceClass)}>{this.renderMinPrice()}</div>
                     </div>
                 </div>
             </div>
