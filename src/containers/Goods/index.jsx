@@ -16,13 +16,15 @@ export default class Goods extends React.Component {
             menuIndex: 0,
             selectFood: [],
             deliveryPrice: 0,
+            componentUpdate: true,      // 避免点击左侧菜单栏子组件进行不必要的渲染
             minPrice: 0,
             loading: true
         };
         this.goodListHeight = [0];
+        this.shoppingFoods = [];
     }
 
-    componentWillMount() {
+    componentWillMount = () => {
         this.props.actions.fetchGoodsList().then(() => {
             this.setState({
                 goods: this.props.goods && this.props.goods.data,
@@ -33,7 +35,7 @@ export default class Goods extends React.Component {
         });
     }
 
-    initScroll() {
+    initScroll = () => {
         this.goodsMenu = new BScroll(this.refs.goodsMenu, {
             click: true                                   // 在PC端启用click事件
         });
@@ -49,13 +51,14 @@ export default class Goods extends React.Component {
 
             if (this.state.menuIndex !== index) {
                 this.setState({
-                    menuIndex: index
+                    menuIndex: index,
+                    componentUpdate: false
                 });
             }
         });
     }
 
-    calculateHeight() {
+    calculateHeight = () => {
         let height = 0;
         const aGoodsList = Array.from(this.refs.goodsDetail.querySelectorAll('.goods-detail-good'));
 
@@ -65,7 +68,7 @@ export default class Goods extends React.Component {
         });
     }
 
-    calculateCurrentIndex() {
+    calculateCurrentIndex = () => {
         for (let i = 0; i < this.goodListHeight.length; i++) {
             const height1 = this.goodListHeight[i];
             const height2 = this.goodListHeight[i + 1];
@@ -77,30 +80,24 @@ export default class Goods extends React.Component {
         return 0;
     }
 
-    selectMenu(index) {
+    selectMenu = (index) => {
         if (index !== this.state.menuIndex) {
             const aGoodsList = this.refs.goodsDetail.querySelectorAll('.goods-detail-good');
             this.goodsDetail.scrollToElement(aGoodsList[index], 300);
         }
     }
 
-    // selectFoods() {
-    //     const { goods } = this.state;
-    //     let aSelectFoods = [];
-    //     // const { selectFoods } = this.state;
-    //
-    //     goods.map(good => {
-    //         good.foods.map(food => {
-    //             if (food.count > 0) {
-    //                 aSelectFoods.push(food);
-    //             }
-    //         });
-    //     });
-    //     console.log(aSelectFoods);
-    // }
+    onChangeCount = () => {
+        const { goods } = this.state;
+
+        this.setState({
+            goods: this.props.goods.data,
+            componentUpdate: true
+        });
+    }
 
     render() {
-        const { goods, menuIndex } = this.state;
+        const { goods, menuIndex, componentUpdate } = this.state;
         const { seller } = this.props;
 
         if (goods === undefined) {
@@ -156,7 +153,7 @@ export default class Goods extends React.Component {
                                                                     }
                                                                 </div>
                                                                 <div className="food-content-cart-control">
-                                                                    <CartControl food={food} />
+                                                                    <CartControl food={food} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -169,7 +166,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
-                    <ShoppingCart goods={goods} seller={seller}/>
+                    <ShoppingCart seller={seller} goods={goods} componentUpdate={componentUpdate}/>
                 </section>
             </div>
         );

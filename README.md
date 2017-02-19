@@ -3,6 +3,6 @@
 ======
 
 ``` bash
-npm install    
-npm run dev   # run the counter example
+yarn    
+yarn run dev   # run the counter example
 ```

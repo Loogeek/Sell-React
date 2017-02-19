@@ -4,37 +4,31 @@ import './style.scss';
 
 export default class CartControl extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            count: this.props.food.count || 0
-        };
+    shouldComponentUpdate(nextProps) {
+        if (!nextProps.componentUpdate) {
+            return false;
+        }
+        return true;
     }
 
-    onIncreaseCount() {
-        const { count } = this.state;
-
-        this.setState({
-            count: this.props.food.count += 1
-        });
+    onIncreaseCount = () => {
+        this.props.food.count += 1;
+        this.props.onChangeCount();
     }
 
-    onDecreaseCount() {
-        const { count } = this.state;
-
-        this.setState({
-            count: this.props.food.count -= 1
-        });
+    onDecreaseCount = () => {
+        this.props.food.count -= 1;
+        this.props.onChangeCount();
     }
 
     render() {
-        const { count } = this.state;
+        const { count } = this.props.food;
 
         return (
             <div className="cart-control">
-                <i className={classnames('cart-control-decrease icon-remove_circle_outline', {'active': count > 0})} onClick={this.onDecreaseCount.bind(this)}></i>
+                <i className={classnames('cart-control-decrease icon-remove_circle_outline', {'active': count > 0})} onClick={this.onDecreaseCount}></i>
                 <span className={classnames('cart-control-count', {'active-count': count > 0})}>{count}</span>
-                <i className="cart-control-increase icon-add_circle" onClick={this.onIncreaseCount.bind(this)}></i>
+                <i className="cart-control-increase icon-add_circle" onClick={this.onIncreaseCount}></i>
             </div>
         );
     }
