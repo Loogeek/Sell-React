@@ -166,7 +166,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
-                    <ShoppingCart seller={seller} goods={goods} componentUpdate={componentUpdate}/>
+                    <ShoppingCart seller={seller} goods={goods} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
                 </section>
             </div>
         );
