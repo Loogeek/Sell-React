@@ -55,6 +55,7 @@
       "foods": [
         {
           "name": "皮蛋瘦肉粥",
+          "id": 1,
           "price": 10,
           "oldPrice": "",
           "description": "咸粥",
@@ -90,6 +91,7 @@
         },
         {
           "name": "扁豆焖面",
+          "id": 2,
           "price": 14,
           "oldPrice": "",
           "description": "",
@@ -125,6 +127,7 @@
         },
         {
           "name": "葱花饼",
+          "id": 3,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -160,6 +163,7 @@
         },
         {
           "name": "牛肉馅饼",
+          "id": 4,
           "price": 14,
           "oldPrice": "",
           "description": "",
@@ -195,6 +199,7 @@
         },
         {
           "name": "招牌猪肉白菜锅贴/10个",
+          "id": 5,
           "price": 17,
           "oldPrice": "",
           "description": "",
@@ -230,6 +235,7 @@
         },
         {
           "name": "南瓜粥",
+          "id": 6,
           "price": 9,
           "oldPrice": "",
           "description": "甜粥",
@@ -264,6 +270,7 @@
         },
         {
           "name": "红豆薏米美肤粥",
+          "id": 7,
           "price": 12,
           "oldPrice": "",
           "description": "甜粥",
@@ -299,6 +306,7 @@
         },
         {
           "name": "八宝酱菜",
+          "id": 8,
           "price": 4,
           "oldPrice": "",
           "description": "",
@@ -334,6 +342,7 @@
         },
         {
           "name": "红枣山药糙米粥",
+          "id": 9,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -369,6 +378,7 @@
         },
         {
           "name": "糊塌子",
+          "id": 10,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -410,6 +420,7 @@
       "foods": [
         {
           "name": "红枣山药粥套餐",
+          "id": 11,
           "price": 29,
           "oldPrice": 36,
           "description": "红枣山药糙米粥,素材包,爽口莴笋丝,四川泡菜或八宝酱菜,配菜可备注",
@@ -437,6 +448,7 @@
       "foods": [
         {
           "name": "VC无限橙果汁",
+          "id": 12,
           "price": 8,
           "oldPrice": 10,
           "description": "",
@@ -471,6 +483,7 @@
       "foods": [
         {
           "name": "娃娃菜炖豆腐",
+          "id": 13,
           "price": 17,
           "oldPrice": "",
           "description": "",
@@ -499,6 +512,7 @@
         },
         {
           "name": "手撕包菜",
+          "id": 14,
           "price": 16,
           "oldPrice": "",
           "description": "",
@@ -527,6 +541,7 @@
         },
         {
           "name": "香酥黄金鱼/3条",
+          "id": 15,
           "price": 11,
           "oldPrice": "",
           "description": "",
@@ -561,6 +576,7 @@
       "foods": [
         {
           "name": "八宝酱菜",
+          "id": 16,
           "price": 4,
           "oldPrice": "",
           "description": "",
@@ -596,6 +612,7 @@
         },
         {
           "name": "拍黄瓜",
+          "id": 17,
           "price": 9,
           "oldPrice": "",
           "description": "",
@@ -637,6 +654,7 @@
       "foods": [
         {
           "name": "红豆薏米粥套餐",
+          "id": 18,
           "price": 37,
           "oldPrice": "",
           "description": "红豆薏米粥,三鲜干蒸烧卖,拍黄瓜",
@@ -658,6 +676,7 @@
         },
         {
           "name": "皮蛋瘦肉粥套餐",
+          "id": 19,
           "price": 31,
           "oldPrice": "",
           "description": "",
@@ -685,6 +704,7 @@
       "foods": [
         {
           "name": "蜜瓜圣女萝莉杯",
+          "id": 20,
           "price": 6,
           "oldPrice": "",
           "description": "",
@@ -698,6 +718,7 @@
         },
         {
           "name": "加多宝",
+          "id": 21,
           "price": 6,
           "oldPrice": "",
           "description": "",
@@ -733,6 +754,7 @@
         },
         {
           "name": "VC无限橙果汁",
+          "id": 22,
           "price": 8,
           "oldPrice": 10,
           "description": "",
@@ -767,6 +789,7 @@
       "foods": [
         {
           "name": "扁豆焖面",
+          "id": 23,
           "price": 14,
           "oldPrice": "",
           "description": "",
@@ -802,6 +825,7 @@
         },
         {
           "name": "葱花饼",
+          "id": 24,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -837,6 +861,7 @@
         },
         {
           "name": "牛肉馅饼",
+          "id": 25,
           "price": 14,
           "oldPrice": "",
           "description": "",
@@ -872,6 +897,7 @@
         },
         {
           "name": "招牌猪肉白菜锅贴/10个",
+          "id": 26,
           "price": 17,
           "oldPrice": "",
           "description": "",
@@ -907,6 +933,7 @@
         },
         {
           "name": "糊塌子",
+          "id": 27,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -948,6 +975,7 @@
       "foods": [
         {
           "name": "皮蛋瘦肉粥",
+          "id": 28,
           "price": 10,
           "oldPrice": "",
           "description": "咸粥",
@@ -982,6 +1010,7 @@
         },
         {
           "name": "南瓜粥",
+          "id": 29,
           "price": 9,
           "oldPrice": "",
           "description": "甜粥",
@@ -1017,6 +1046,7 @@
         },
         {
           "name": "红豆薏米美肤粥",
+          "id": 30,
           "price": 12,
           "oldPrice": "",
           "description": "甜粥",
@@ -1052,6 +1082,7 @@
         },
         {
           "name": "红枣山药糙米粥",
+          "id": 31,
           "price": 10,
           "oldPrice": "",
           "description": "",
@@ -1087,6 +1118,7 @@
         },
         {
           "name": "鲜蔬菌菇粥",
+          "id": 32,
           "price": 11,
           "oldPrice": "",
           "description": "咸粥",
@@ -1121,6 +1153,7 @@
         },
         {
           "name": "田园蔬菜粥",
+          "id": 33,
           "price": 10,
           "oldPrice": "",
           "description": "咸粥",

@@ -12,7 +12,7 @@ export default class ShoppingCart extends React.Component {
         };
         this.totalPrice = 0;
         this.totalCount = 0;
-        this.aFood = [];
+        this.foodList = [];
     }
 
     componentWillReceiveProps(nextProps) {
@@ -20,17 +20,20 @@ export default class ShoppingCart extends React.Component {
             return;
         }
 
-        let aFood = [];
+        let foodList = [];
 
         nextProps.goods.map(good => {
             good.foods.map(food => {
                 if (food.count > 0) {
-                    aFood.push(food);
+                    foodList.push(food);
                 }
             });
         });
-        this.aFood = aFood;
-        this.calcPriceAndCount(aFood);
+        this.foodList = foodList;
+        if (this.foodList.length === 0) {
+            this.hideShoppingList();
+        }
+        this.calcPriceAndCount(foodList);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -66,7 +69,8 @@ export default class ShoppingCart extends React.Component {
         }
     }
 
-    showPrice = () => {
+    showPrice = (e) => {
+        e.stopPropagation();
         const { seller } = this.props;
         const minPrice   = seller.data && seller.data.minPrice || 20;
         const price      = this.totalPrice + (seller.data && seller.data.deliveryPrice);
@@ -79,7 +83,7 @@ export default class ShoppingCart extends React.Component {
     }
 
     renderShoppingList = (food) => {
-        const { componentUpdate } = this.props;
+        const { componentUpdate, goods, actions } = this.props;
 
         return food.map((item, index) => {
             return (
@@ -89,7 +93,7 @@ export default class ShoppingCart extends React.Component {
                         <span>￥{item.price}</span>
                     </div>
                     <div className="food-cart-control">
-                        <CartControl food={item} componentUpdate={componentUpdate} onChangeCount={this.props.onChangeCount} />
+                        <CartControl food={item} goods={goods} actions={actions} componentUpdate={componentUpdate} />
                     </div>
                 </li>
             );
@@ -97,9 +101,24 @@ export default class ShoppingCart extends React.Component {
     }
 
     showShoppingList = () => {
+        if (this.foodList.length === 0) {
+            return;
+        }
         this.setState({
             showShoppingList: !this.state.showShoppingList
         });
+    }
+
+    hideShoppingList = () => {
+        this.setState({
+            showShoppingList: false
+        });
+    }
+
+    emptyShoppingList = () => {
+        const { goods, actions } = this.props;
+
+        actions.resetShoppingList(goods);
     }
 
     render() {
@@ -132,12 +151,13 @@ export default class ShoppingCart extends React.Component {
                 <div className={classnames('shopping-cart-list', {'show': showShoppingList})}>
                     <header className="shopping-cart-list-header">
                         <h1 className="title">购物车</h1>
-                        <span className="empty">清空</span>
+                        <span className="empty" onClick={this.emptyShoppingList}>清空</span>
                     </header>
                     <ul className="shopping-cart-list-content">
-                        {this.renderShoppingList(this.aFood)}
+                        {this.renderShoppingList(this.foodList)}
                     </ul>
                 </div>
+                <div className={classnames('shopping-cart-mask', {'show': showShoppingList})} onClick={this.hideShoppingList}></div>
             </div>
         );
     }

@@ -15,13 +15,10 @@ export default class Goods extends React.Component {
             goods: [],
             menuIndex: 0,
             selectFood: [],
-            deliveryPrice: 0,
             componentUpdate: true,      // 避免点击左侧菜单栏子组件进行不必要的渲染
-            minPrice: 0,
             loading: true
         };
         this.goodListHeight = [0];
-        this.shoppingFoods = [];
     }
 
     componentWillMount = () => {
@@ -87,22 +84,9 @@ export default class Goods extends React.Component {
         }
     }
 
-    onChangeCount = () => {
-        const { goods } = this.state;
-
-        this.setState({
-            goods: this.props.goods.data,
-            componentUpdate: true
-        });
-    }
-
     render() {
         const { goods, menuIndex, componentUpdate } = this.state;
-        const { seller } = this.props;
-
-        if (goods === undefined) {
-            return null;
-        }
+        const { seller, actions } = this.props;
 
         return (
             <div className="goods">
@@ -153,7 +137,8 @@ export default class Goods extends React.Component {
                                                                     }
                                                                 </div>
                                                                 <div className="food-content-cart-control">
-                                                                    <CartControl food={food} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
+                                                                    <CartControl food={food} goods={goods} actions={actions}
+                                                                         componentUpdate={componentUpdate} />
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -166,7 +151,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
-                    <ShoppingCart seller={seller} goods={goods} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
+                    <ShoppingCart seller={seller} goods={goods} actions={actions} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
                 </section>
             </div>
         );

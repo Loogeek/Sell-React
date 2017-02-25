@@ -13,6 +13,24 @@ const goods = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_GOODS_LIST':
             return {...state, ...action.data};
+        case 'RESET_SHOPPING_LIST':
+            action.data.map(good => {
+                good.foods.map(food => {
+                    if (food.count > 0) {
+                        food.count = 0;
+                    }
+                });
+            });
+            return {...state, ...action.data};
+        case 'SET_FOOD_COUNT':
+            action.data.goods.map(good => {
+                good.foods.map(food => {
+                    if (food.id === action.data.id) {
+                        food.count += action.data.num;
+                    }
+                });
+            });
+            return {...state, ...action.data.goods};
         default:
             return state;
     }

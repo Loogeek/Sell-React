@@ -45,3 +45,21 @@ export function fetchGoodsList() {
         });
     };
 }
+
+export function setFoodCount(goods, id, num) {
+    return (dispatch, getState) => {
+        dispatch({
+            type: types.SET_FOOD_COUNT,
+            data: { goods, id, num }
+        });
+    };
+}
+
+export function resetShoppingList(goods) {
+    return (dispatch, getState) => {
+        dispatch({
+            type: types.RESET_SHOPPING_LIST,
+            data: goods
+        });
+    };
+}

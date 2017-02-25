@@ -11,14 +11,9 @@ export default class CartControl extends React.Component {
         return true;
     }
 
-    onIncreaseCount = () => {
-        this.props.food.count += 1;
-        this.props.onChangeCount();
-    }
-
-    onDecreaseCount = () => {
-        this.props.food.count -= 1;
-        this.props.onChangeCount();
+    onChangeCount = (num) => {
+        const { goods, food, actions } = this.props;
+        actions.setFoodCount(goods, food.id, num);
     }
 
     render() {
@@ -26,9 +21,9 @@ export default class CartControl extends React.Component {
 
         return (
             <div className="cart-control">
-                <i className={classnames('cart-control-decrease icon-remove_circle_outline', {'active': count > 0})} onClick={this.onDecreaseCount}></i>
+                <i className={classnames('cart-control-decrease icon-remove_circle_outline', {'active': count > 0})} onClick={this.onChangeCount.bind(this, -1)}></i>
                 <span className={classnames('cart-control-count', {'active-count': count > 0})}>{count}</span>
-                <i className="cart-control-increase icon-add_circle" onClick={this.onIncreaseCount}></i>
+                <i className="cart-control-increase icon-add_circle" onClick={this.onChangeCount.bind(this, 1)}></i>
             </div>
         );
     }
