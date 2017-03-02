@@ -3,16 +3,19 @@ import classnames from 'classnames';
 import './style.scss';
 
 export default class CartControl extends React.Component {
+    constructor(props) {
+        super(props);
+        this.cacheCount = 0;
+    }
 
     shouldComponentUpdate(nextProps) {
-        if (!nextProps.componentUpdate) {
-            return false;
-        }
-        return true;
+        return this.cacheCount !== nextProps.food.count;
     }
 
     onChangeCount = (num) => {
         const { goods, food, actions } = this.props;
+        this.cacheCount = food.count;            // 缓存当前的数量
+        
         actions.setFoodCount(goods, food.id, num);
     }
 

@@ -15,7 +15,6 @@ export default class Goods extends React.Component {
             goods: [],
             menuIndex: 0,
             selectFood: [],
-            componentUpdate: true,      // 避免点击左侧菜单栏子组件进行不必要的渲染
             loading: true
         };
         this.goodListHeight = [0];
@@ -48,8 +47,7 @@ export default class Goods extends React.Component {
 
             if (this.state.menuIndex !== index) {
                 this.setState({
-                    menuIndex: index,
-                    componentUpdate: false
+                    menuIndex: index
                 });
             }
         });
@@ -137,8 +135,7 @@ export default class Goods extends React.Component {
                                                                     }
                                                                 </div>
                                                                 <div className="food-content-cart-control">
-                                                                    <CartControl food={food} goods={goods} actions={actions}
-                                                                         componentUpdate={componentUpdate} />
+                                                                    <CartControl food={food} goods={goods} actions={actions} />
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -151,7 +148,7 @@ export default class Goods extends React.Component {
                             })
                         }
                     </ul>
-                    <ShoppingCart seller={seller} goods={goods} actions={actions} componentUpdate={componentUpdate} onChangeCount={this.onChangeCount} />
+                    <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
                 </section>
             </div>
         );

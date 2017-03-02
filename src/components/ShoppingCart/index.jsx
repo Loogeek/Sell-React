@@ -16,12 +16,10 @@ export default class ShoppingCart extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!nextProps.componentUpdate) {
+        if (this.props.menuIndex !== nextProps.menuIndex) {
             return;
         }
-
         let foodList = [];
-
         nextProps.goods.map(good => {
             good.foods.map(food => {
                 if (food.count > 0) {
@@ -37,10 +35,7 @@ export default class ShoppingCart extends React.Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        if (!nextProps.componentUpdate) {
-            return false;
-        }
-        return true;
+        return this.props.menuIndex === nextProps.menuIndex;
     }
 
     calcPriceAndCount = (food) => {
@@ -83,7 +78,7 @@ export default class ShoppingCart extends React.Component {
     }
 
     renderShoppingList = (food) => {
-        const { componentUpdate, goods, actions } = this.props;
+        const { goods, actions } = this.props;
 
         return food.map((item, index) => {
             return (
@@ -93,7 +88,7 @@ export default class ShoppingCart extends React.Component {
                         <span>￥{item.price}</span>
                     </div>
                     <div className="food-cart-control">
-                        <CartControl food={item} goods={goods} actions={actions} componentUpdate={componentUpdate} />
+                        <CartControl food={item} goods={goods} actions={actions} />
                     </div>
                 </li>
             );
