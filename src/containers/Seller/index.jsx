@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import connect from 'app/connect/index';
 import Header from 'components/Header';
 import Goods from 'containers/Goods';
+import classnames from 'classnames';
 import './style.scss';
 
 @connect()
@@ -26,7 +27,7 @@ export default class Seller extends React.Component {
 
     render() {
         const { seller, loading } = this.state;
-        const { actions, goods } = this.props;
+        const { actions, goods, location } = this.props;
 
         if (seller === undefined) {
             return null;
@@ -37,13 +38,13 @@ export default class Seller extends React.Component {
                 <Header seller={seller}></Header>
                 <ul className="nav">
                     <li className="nav-item">
-                        <Link to="/goods">商品</Link>
+                        <Link to="/goods" className={classnames({'active': location.pathname === '/' || location.pathname === '/goods'})}>商品</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/ratings">评价</Link>
+                        <Link to="/ratings" className={classnames({'active': location.pathname === '/ratings'})}>评价</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/seller">商家</Link>
+                        <Link to="/seller" className={classnames({'active': location.pathname === '/seller'})}>商家</Link>
                     </li>
                 </ul>
                 <Goods seller={seller} />
