@@ -3,6 +3,7 @@ import connect from 'app/connect/index';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
 import CartControl from 'components/CartControl';
+import Food from 'components/Food';
 import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
@@ -14,6 +15,7 @@ export default class Goods extends React.Component {
         this.state = {
             goods: [],
             menuIndex: 0,
+            showDetail: false,
             selectFood: [],
             loading: true
         };
@@ -82,74 +84,86 @@ export default class Goods extends React.Component {
         }
     }
 
+    showDetail = (food) => {
+        this.setState({
+            showDetail: true,
+            selectFood: food
+        });
+    }
+
     render() {
-        const { goods, menuIndex, componentUpdate } = this.state;
+        const { goods, menuIndex, componentUpdate, showDetail, selectFood } = this.state;
         const { seller, actions } = this.props;
 
         return (
-            <div className="goods">
-                <aside className="goods-menu" ref="goodsMenu">
-                    <ul>
-                        {
-                            goods.map((item, index) => {
-                                return (
-                                    <li className={classnames('goods-menu-item', {'current': menuIndex === index})} key={index} onClick={this.selectMenu.bind(this, index)}>
-                                        <span className="name">
-                                            {
-                                                item.type > 0 ? <SupportIcon type={item.type} cls={1} /> : null
-                                            }
-                                            {item.name}
-                                        </span>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                </aside>
-                <section className="goods-detail" ref="goodsDetail">
-                    <ul>
-                        {
-                            goods.map((good, index) => {
-                                return (
-                                    <li className="goods-detail-good" key={index}>
-                                        <h1 className="title">{good.name}</h1>
-                                        <ul>
-                                            {
-                                                good.foods.map((food, index) => {
-                                                    return (
-                                                        <li className="goods-detail-good-food" key={index}>
-                                                            <div className="food-thumail">
-                                                                <img src={food.icon} alt={food.name} />
-                                                            </div>
-                                                            <div className="food-content">
-                                                                <h2 className="food-content-name">{food.name}</h2>
-                                                                <p className="food-content-desc">{food.description}</p>
-                                                                <div className="food-content-extra">
-                                                                    <span className="food-content-extra-count">月售{food.sellCount}</span>
-                                                                    <span>好评率{food.rating}%</span>
+            <div className="goods-food-wrp">
+                <div className="goods">
+                    <aside className="goods-menu" ref="goodsMenu">
+                        <ul>
+                            {
+                                goods.map((item, index) => {
+                                    return (
+                                        <li className={classnames('goods-menu-item', {'current': menuIndex === index})} key={index} onClick={this.selectMenu.bind(this, index)}>
+                                            <span className="name">
+                                                {
+                                                    item.type > 0 ? <SupportIcon type={item.type} cls={1} /> : null
+                                                }
+                                                {item.name}
+                                            </span>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                    </aside>
+                    <section className="goods-detail" ref="goodsDetail">
+                        <ul>
+                            {
+                                goods.map((good, index) => {
+                                    return (
+                                        <li className="goods-detail-good" key={index}>
+                                            <h1 className="title">{good.name}</h1>
+                                            <ul>
+                                                {
+                                                    good.foods.map((food, index) => {
+                                                        return (
+                                                            <li className="goods-detail-good-food" key={index} onClick={this.showDetail.bind(this, food)}>
+                                                                <div className="food-thumail">
+                                                                    <img src={food.icon} alt={food.name} />
                                                                 </div>
-                                                                <div className="food-content-price">
-                                                                    <span className="now">￥{food.price}</span>
-                                                                    {
-                                                                        food.oldPrice ? <span className="old">￥{food.oldPrice}</span> : null
-                                                                    }
+                                                                <div className="food-content">
+                                                                    <h2 className="food-content-name">{food.name}</h2>
+                                                                    <p className="food-content-desc">{food.description}</p>
+                                                                    <div className="food-content-extra">
+                                                                        <span className="food-content-extra-count">月售{food.sellCount}</span>
+                                                                        <span>好评率{food.rating}%</span>
+                                                                    </div>
+                                                                    <div className="food-content-price">
+                                                                        <span className="now">￥{food.price}</span>
+                                                                        {
+                                                                            food.oldPrice ? <span className="old">￥{food.oldPrice}</span> : null
+                                                                        }
+                                                                    </div>
+                                                                    <div className="food-content-cart-control">
+                                                                        <CartControl food={food} goods={goods} actions={actions} />
+                                                                    </div>
                                                                 </div>
-                                                                <div className="food-content-cart-control">
-                                                                    <CartControl food={food} goods={goods} actions={actions} />
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    );
-                                                })
-                                            }
-                                        </ul>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                    <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
-                </section>
+                                                            </li>
+                                                        );
+                                                    })
+                                                }
+                                            </ul>
+                                        </li>
+                                    );
+                                })
+                            }
+                        </ul>
+                        <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
+                    </section>
+                </div>
+                {
+                    showDetail ? <Food selectFood={selectFood} /> : null
+                }
             </div>
         );
     }
