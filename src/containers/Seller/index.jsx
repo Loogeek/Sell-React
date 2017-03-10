@@ -6,7 +6,7 @@ import Goods from 'containers/Goods';
 import classnames from 'classnames';
 import './style.scss';
 
-@connect()
+@connect
 export default class Seller extends React.Component {
     constructor(props) {
         super(props);

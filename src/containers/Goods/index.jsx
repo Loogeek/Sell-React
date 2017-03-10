@@ -2,21 +2,20 @@ import React from 'react';
 import connect from 'app/connect/index';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
-import CartControl from 'components/CartControl';
 import Food from 'components/Food';
 import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
 
-@connect()
+@connect
 export default class Goods extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             goods: [],
             menuIndex: 0,
-            showDetail: false,
-            selectFood: [],
+            // showDetail: false,
+            // selectFood: [],
             loading: true
         };
         this.goodListHeight = [0];
@@ -84,13 +83,6 @@ export default class Goods extends React.Component {
         }
     }
 
-    showDetail = (food) => {
-        this.setState({
-            showDetail: true,
-            selectFood: food
-        });
-    }
-
     render() {
         const { goods, menuIndex, componentUpdate, showDetail, selectFood } = this.state;
         const { seller, actions } = this.props;
@@ -127,28 +119,11 @@ export default class Goods extends React.Component {
                                                 {
                                                     good.foods.map((food, index) => {
                                                         return (
-                                                            <li className="goods-detail-good-food" key={index} onClick={this.showDetail.bind(this, food)}>
-                                                                <div className="food-thumail">
-                                                                    <img src={food.icon} alt={food.name} />
-                                                                </div>
-                                                                <div className="food-content">
-                                                                    <h2 className="food-content-name">{food.name}</h2>
-                                                                    <p className="food-content-desc">{food.description}</p>
-                                                                    <div className="food-content-extra">
-                                                                        <span className="food-content-extra-count">月售{food.sellCount}</span>
-                                                                        <span>好评率{food.rating}%</span>
-                                                                    </div>
-                                                                    <div className="food-content-price">
-                                                                        <span className="now">￥{food.price}</span>
-                                                                        {
-                                                                            food.oldPrice ? <span className="old">￥{food.oldPrice}</span> : null
-                                                                        }
-                                                                    </div>
-                                                                    <div className="food-content-cart-control">
-                                                                        <CartControl food={food} goods={goods} actions={actions} />
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                            <Food key={index}
+                                                                actions={actions}
+                                                                food={food}
+                                                                goods={goods}
+                                                            />
                                                         );
                                                     })
                                                 }
@@ -161,9 +136,6 @@ export default class Goods extends React.Component {
                         <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
                     </section>
                 </div>
-                {
-                    showDetail ? <Food selectFood={selectFood} /> : null
-                }
             </div>
         );
     }

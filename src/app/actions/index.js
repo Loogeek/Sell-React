@@ -1,5 +1,7 @@
 import * as types from '../constants/ActionTypes';
 
+// Seller
+
 function receiveSellerList(data) {
     return {
         type: types.FETCH_SELLER_LIST,
@@ -22,6 +24,8 @@ export function fetchSellerList() {
         });
     };
 }
+
+// Gooods
 
 function receiveGoodsList(data) {
     return {
@@ -62,4 +66,13 @@ export function resetShoppingList(goods) {
             data: goods
         });
     };
+}
+
+// FoodDetail
+export function fetchFoodDetail() {
+    // return (dispatch, getState) => {
+    //     dispatch({
+    //
+    //     })
+    // }
 }
