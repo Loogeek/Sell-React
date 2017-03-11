@@ -9,14 +9,18 @@ export default class FoodDetail extends React.Component {
     // }
 
     componentWillMount() {
-        const { goods, params } = this.props;
+        const { goods, params, foodDetail } = this.props;
         const id = Number(params.id);
 
-        if (goods.data) {
-            this.props.actions.fetchFoodDetail(goods.data, id);
-        } else {
+        if (!foodDetail.id) {
             this.props.actions.fetchGoodsList().then(() => {
-                this.props.actions.fetchFoodDetail(this.props.goods.data, id);
+                for (let good of this.props.goods.data) {
+                    let foodDet = good.foods.find(food => food.id === id);
+                    if (foodDet) {
+                        this.props.actions.fetchFoodDetail(foodDet);
+                        break;
+                    }
+                }
             });
         }
     }

@@ -14,8 +14,6 @@ export default class Goods extends React.Component {
         this.state = {
             goods: [],
             menuIndex: 0,
-            // showDetail: false,
-            // selectFood: [],
             loading: true
         };
         this.goodListHeight = [0];

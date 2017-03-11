@@ -12,7 +12,9 @@ export default class CartControl extends React.Component {
         return this.cacheCount !== nextProps.food.count;
     }
 
-    onChangeCount = (num) => {
+    onChangeCount = (num, e) => {
+        e.stopPropagation();
+        
         const { goods, food, actions } = this.props;
         this.cacheCount = food.count;            // 缓存当前的数量
 

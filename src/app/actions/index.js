@@ -55,7 +55,7 @@ export function setFoodCount(goods, id, num) {
         dispatch({
             type: types.SET_FOOD_COUNT,
             goods,
-            id, 
+            id,
             num
         });
     };
@@ -71,12 +71,11 @@ export function resetShoppingList(goods) {
 }
 
 // FoodDetail
-export function fetchFoodDetail(goods, id) {
+export function fetchFoodDetail(food) {
     return (dispatch, getState) => {
         dispatch({
             type: types.FETCH_FOOD_DETAIL,
-            goods,
-            id
+            food
         });
     };
 }

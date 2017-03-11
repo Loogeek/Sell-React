@@ -43,17 +43,9 @@ const goods = (state = [], action) => {
 };
 
 const foodDetail = (state = {}, action) => {
-    let foodDet = null;
-
     switch (action.type) {
         case 'FETCH_FOOD_DETAIL':
-            for (let good of action.goods) {
-                foodDet = good.foods.find(food => food.id === action.id);
-                if (foodDet) {
-                    break;
-                }
-            }
-            return {...state, ...foodDet};
+            return {...state, ...action.food};
         default:
             return state;
     }
