@@ -11,8 +11,8 @@ export default class App extends React.Component {
             <Router history={browserHistory}>
                 <Route path="/" component={Seller} >
                     <Route path="goods" component={Goods}></Route>
-                    <Route path="food/:id" component={FoodDetail}></Route>
                 </Route>
+                <Route path="/food/:id" component={FoodDetail}></Route>
             </Router>
         );
     }

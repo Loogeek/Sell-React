@@ -23,14 +23,37 @@ const goods = (state = [], action) => {
             });
             return {...state, ...action.data};
         case 'SET_FOOD_COUNT':
-            action.data.goods.map(good => {
-                good.foods.map(food => {
-                    if (food.id === action.data.id) {
-                        food.count += action.data.num;
+            let flag = false;
+
+            for (let good of action.goods) {
+                good.foods.find(food => {
+                    if (food.id === action.id) {
+                        food.count += action.num;
+                        flag = true;
                     }
                 });
-            });
-            return {...state, ...action.data.goods};
+                if (flag) {
+                    break;
+                }
+            }
+            return {...state, ...action.goods};
+        default:
+            return state;
+    }
+};
+
+const foodDetail = (state = {}, action) => {
+    let foodDet = null;
+
+    switch (action.type) {
+        case 'FETCH_FOOD_DETAIL':
+            for (let good of action.goods) {
+                foodDet = good.foods.find(food => food.id === action.id);
+                if (foodDet) {
+                    break;
+                }
+            }
+            return {...state, ...foodDet};
         default:
             return state;
     }
@@ -38,7 +61,8 @@ const goods = (state = [], action) => {
 
 const rootReducer = combineReducers({
     seller,
-    goods
+    goods,
+    foodDetail
 });
 
 export default rootReducer;

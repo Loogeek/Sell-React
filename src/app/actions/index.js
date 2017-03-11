@@ -54,7 +54,9 @@ export function setFoodCount(goods, id, num) {
     return (dispatch, getState) => {
         dispatch({
             type: types.SET_FOOD_COUNT,
-            data: { goods, id, num }
+            goods,
+            id, 
+            num
         });
     };
 }
@@ -69,10 +71,12 @@ export function resetShoppingList(goods) {
 }
 
 // FoodDetail
-export function fetchFoodDetail() {
-    // return (dispatch, getState) => {
-    //     dispatch({
-    //
-    //     })
-    // }
+export function fetchFoodDetail(goods, id) {
+    return (dispatch, getState) => {
+        dispatch({
+            type: types.FETCH_FOOD_DETAIL,
+            goods,
+            id
+        });
+    };
 }
