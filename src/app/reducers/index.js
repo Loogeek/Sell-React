@@ -42,19 +42,9 @@ const goods = (state = [], action) => {
     }
 };
 
-const foodDetail = (state = {}, action) => {
-    switch (action.type) {
-        case 'FETCH_FOOD_DETAIL':
-            return {...state, ...action.food};
-        default:
-            return state;
-    }
-};
-
 const rootReducer = combineReducers({
     seller,
-    goods,
-    foodDetail
+    goods
 });
 
 export default rootReducer;

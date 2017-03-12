@@ -1,25 +1,14 @@
 import React from 'react';
-// import { Link } from 'react-router';
 import CartControl from 'components/CartControl';
 import './style.scss';
 
 export default class Food extends React.Component {
-    static contextTypes = {
-        router: React.PropTypes.object
-    }
-
-    showDetail = (food) => {
-        this.props.actions.fetchFoodDetail(food);
-        this.context.router.push({
-            pathname: `/food/${food.id}`
-        });
-    }
 
     render() {
         const { actions, goods, food } = this.props;
 
         return (
-            <li className="food" onClick={this.showDetail.bind(this, food)}>
+            <li className="food" onClick={this.props.toggleFoodDetail.bind(this, food, true)}>
                 <div className="food-thumail">
                     <img src={food.icon} alt={food.name} />
                 </div>

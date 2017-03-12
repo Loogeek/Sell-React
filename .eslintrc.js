@@ -29,7 +29,8 @@ module.exports = {
     'no-undef': 1,
     'no-trailing-spaces': 0,
     'handle-callback-err': 0,
-    'no-multi-spaces': 0
+    'no-multi-spaces': 0,
+    'operator-linebreak': 0
   },
   'globals': {
      'fetch': true

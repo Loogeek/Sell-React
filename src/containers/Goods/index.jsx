@@ -3,6 +3,7 @@ import connect from 'app/connect/index';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
 import Food from 'components/Food';
+import FoodDetail from 'components/Food/FoodDetail';
 import BScroll from 'better-scroll';
 import classnames from 'classnames';
 import './style.scss';
@@ -14,6 +15,8 @@ export default class Goods extends React.Component {
         this.state = {
             goods: [],
             menuIndex: 0,
+            showFoodDetail: false,
+            selectFood: {},
             loading: true
         };
         this.goodListHeight = [0];
@@ -81,8 +84,15 @@ export default class Goods extends React.Component {
         }
     }
 
+    toggleFoodDetail = (food, bol) => {
+        this.setState({
+            showFoodDetail: bol,
+            selectFood: food
+        });
+    }
+
     render() {
-        const { goods, menuIndex, componentUpdate, showDetail, selectFood } = this.state;
+        const { goods, menuIndex, componentUpdate, showDetail, selectFood, showFoodDetail } = this.state;
         const { seller, actions } = this.props;
 
         return (
@@ -121,6 +131,7 @@ export default class Goods extends React.Component {
                                                                 actions={actions}
                                                                 food={food}
                                                                 goods={goods}
+                                                                toggleFoodDetail={this.toggleFoodDetail}
                                                             />
                                                         );
                                                     })
@@ -133,6 +144,15 @@ export default class Goods extends React.Component {
                         </ul>
                         <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
                     </section>
+                    {
+                        showFoodDetail ?
+                            <FoodDetail
+                                actions={actions}
+                                goods={goods}
+                                food={selectFood}
+                                toggleFoodDetail={this.toggleFoodDetail}
+                            /> : null
+                    }
                 </div>
             </div>
         );

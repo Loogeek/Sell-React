@@ -69,13 +69,3 @@ export function resetShoppingList(goods) {
         });
     };
 }
-
-// FoodDetail
-export function fetchFoodDetail(food) {
-    return (dispatch, getState) => {
-        dispatch({
-            type: types.FETCH_FOOD_DETAIL,
-            food
-        });
-    };
-}

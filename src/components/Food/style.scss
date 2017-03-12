@@ -1,7 +1,7 @@
 @import '../../../static/css/mixin.scss';
 
 .food {
-    margin: 18px;
+    margin: 18px 18px 0;
     display: flex;
     padding-bottom: 18px;
     position: relative;
@@ -76,5 +76,104 @@
         position: absolute;
         right: 0;
         bottom: 12px;
+    }
+
+    // 商品详情页
+    &-detail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 48px;
+        z-index: 80;
+        width: 100%;
+        background-color: #fff;
+        overflow-y: auto;
+
+        &-header {
+            position: relative;
+            height: 0;
+            width: 100%;
+            padding-top: 100%;
+
+            &-image {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .back {
+                position: absolute;
+                top: 10px;
+                left: 0;
+
+                .icon-arrow_lift {
+                    display: block;
+                    padding: 10px;
+                    font-size: 2rem;
+                    color: #fff;
+                }
+            }
+        }
+
+        &-content {
+            position: relative;
+            margin: 18px 18px 0;
+            padding-bottom: 18px;
+
+            &-title {
+                height: 14px;
+                line-height: 14px;
+                margin-bottom: 8px;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: rgb(7, 17, 27);
+            }
+
+            &-detail {
+                margin-bottom: 18px;
+                line-height: 10px;
+                height: 10px;
+                font-size: 1.2rem;
+                color: rgb(147, 153, 159);
+            }
+
+            &-price {
+                font-weight: 700;
+                line-height: 24px;
+
+                .now {
+                    margin-right: 8px;
+                    font-size: 1.4rem;
+                    color: rgb(240, 20, 20);
+                }
+
+                .old {
+                    text-decoration: line-through;
+                    font-size: 1rem;
+                    color: rgb(147, 153, 159);
+                }
+            }
+        }
+
+        &-info {
+            margin: 18px;
+
+            .info-content {
+                line-height: 24px;
+                padding: 0 8px;
+                font-size: 1.2rem;
+                color: rgb(77, 85, 93);
+            }
+        }
+
+        .detail-title {
+            line-height: 14px;
+            margin-bottom: 6px;
+            font-size: 1.4rem;
+            color: rgb(7, 17, 27);
+        }
+
     }
 }
