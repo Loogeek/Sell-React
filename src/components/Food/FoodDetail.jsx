@@ -1,8 +1,15 @@
 import React from 'react';
 import CartControl from 'components/CartControl';
+import RatingsSelect from 'components/RatingSelect';
 import './style.scss';
 
 export default class FoodDetail extends React.Component {
+
+    onChangeCount = () => {
+        const { actions, goods, food } = this.props;
+
+        actions.setFoodCount(goods, food.id, 1);
+    }
 
     render() {
         const { actions, goods, food } = this.props;
@@ -24,9 +31,13 @@ export default class FoodDetail extends React.Component {
                             food.oldPrice ? <span className="old">￥{food.oldPrice}</span> : null
                         }
                     </div>
-                    <div className="food-cart-control">
-                        <CartControl food={food} goods={goods} actions={actions} />
-                    </div>
+                    {
+                        food.count > 0 ?
+                            <div className="food-cart-control">
+                                <CartControl food={food} goods={goods} actions={actions} />
+                            </div> :
+                            <p className="buy-cart" onClick={this.onChangeCount}>加入购物车</p>
+                    }
                 </div>
                 <div className="split-line"></div>
                 <div className="food-detail-info">
@@ -36,6 +47,7 @@ export default class FoodDetail extends React.Component {
                 <div className="split-line"></div>
                 <div className="rating">
                     <h3 className="detail-title">商品评价</h3>
+                    <RatingsSelect food={food} />
                 </div>
             </section>
         );
