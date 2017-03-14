@@ -1,13 +1,18 @@
 import React from 'react';
 
-export default class RatingsSelect extends React.Component {
+export default class RatingSelect extends React.Component {
+
     render() {
+        const { ratings, classify } = this.props;
+
         return (
             <div className="ratingselect">
                 <ul className="ratingselect-type">
-                    <li className="ratingselect-type-block positive"></li>
-                    <li className="ratingselect-type-block positive"></li>
-                    <li className="ratingselect-type-block negative"></li>
+                    {
+                        classify.map((item, index) =>
+                            <li className="ratingselect-type-block positive" key={index}>{item}</li>
+                        )
+                    }
                 </ul>
                 <div className="ratingselect-toggle">
                     <i className="icon-check_circle"></i>
@@ -17,3 +22,11 @@ export default class RatingsSelect extends React.Component {
         );
     }
 }
+
+RatingSelect.propTypes = {
+    ratings: React.PropTypes.array
+};
+
+RatingSelect.defaultProps = {
+    classify: ['全部', '推荐', '吐槽']
+};

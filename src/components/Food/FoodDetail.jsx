@@ -1,6 +1,6 @@
 import React from 'react';
 import CartControl from 'components/CartControl';
-import RatingsSelect from 'components/RatingSelect';
+import RatingSelect from 'components/RatingSelect';
 import './style.scss';
 
 export default class FoodDetail extends React.Component {
@@ -47,7 +47,7 @@ export default class FoodDetail extends React.Component {
                 <div className="split-line"></div>
                 <div className="rating">
                     <h3 className="detail-title">商品评价</h3>
-                    <RatingsSelect food={food} />
+                    <RatingSelect ratings={food.ratings} />
                 </div>
             </section>
         );
