@@ -1,4 +1,6 @@
 import React from 'react';
+import classnames from 'classnames';
+import './style.scss';
 
 export default class RatingSelect extends React.Component {
 
@@ -10,7 +12,9 @@ export default class RatingSelect extends React.Component {
                 <ul className="ratingselect-type">
                     {
                         classify.map((item, index) =>
-                            <li className="ratingselect-type-block positive" key={index}>{item}</li>
+                            <li className={index === classify.length - 1 ? 'ratingselect-type-block negative' : 'ratingselect-type-block positive'} key={index}>
+                                {item}
+                            </li>
                         )
                     }
                 </ul>
