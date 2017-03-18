@@ -43,7 +43,7 @@
     }
 
     &-toggle {
-        padding: 12px 18px;
+        padding: 12px 18px 12px 0rem;
         line-height: 24px;
         @include border-bottom-1px(rgba(7, 17, 27, 0.1));
         color: rgb(147, 153, 159);
@@ -64,6 +64,42 @@
 
         &-text {
             font-size: 1.2rem;
+        }
+    }
+
+    &-content {
+        &-item {
+            padding: 16px 0;
+            @include border-bottom-1px(rgba(7, 17, 27, 0.1));
+
+            .item-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 6px;
+                font-size: 1rem;
+                line-height: 12px;
+                color: #93999f;
+
+                .username {
+                    > img {
+                        width: 12px;
+                        height: 12px;
+                        margin-left: 6px;
+                        border-radius: 50%;
+                        vertical-align: middle;
+                    }
+                }
+            }
+
+            .icon-thumb_up {
+                margin-right: 4px;
+                color: #00a0dc;
+            }
+
+            .icon-thumb_down {
+                margin-right: 4px;
+                color: #93999f;
+            }
         }
     }
 }

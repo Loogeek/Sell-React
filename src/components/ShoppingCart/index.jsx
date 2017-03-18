@@ -82,12 +82,12 @@ export default class ShoppingCart extends React.Component {
 
         return food.map((item, index) => {
             return (
-                <li className="food" key={index}>
-                    <span className="food-name">{item.name}</span>
-                    <div className="food-price">
+                <li className="shopping-food" key={index}>
+                    <span className="shopping-food-name">{item.name}</span>
+                    <div className="shopping-food-price">
                         <span>￥{item.price}</span>
                     </div>
-                    <div className="food-cart-control">
+                    <div className="shopping-food-cart-control">
                         <CartControl food={item} goods={goods} actions={actions} />
                     </div>
                 </li>
