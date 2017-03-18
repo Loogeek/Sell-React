@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { formatDate } from 'utils/formatDate';
 import './style.scss';
 
 export default class RatingSelect extends React.Component {
@@ -39,7 +40,7 @@ export default class RatingSelect extends React.Component {
                 <li className="ratingselect-content-item" key={index}>
                     <p className="item-header">
                         <span className="ratetime">
-                                {item.rateTime}
+                                { formatDate(item.rateTime, 'yyyy-MM-dd hh:mm') }
                         </span>
                         <span className="username">
                             {item.username}
