@@ -27,35 +27,6 @@ export default class RatingSelect extends React.Component {
         });
     }
 
-    renderRatingsContent = () => {
-        const { ratings } = this.props;
-        const { showRatingsType, showAllRatingsText } = this.state;
-        let toggleFlag = true;
-
-        return ratings.filter(item => {
-            toggleFlag = showAllRatingsText ? true : Boolean(item.text);
-            return toggleFlag && (showRatingsType === this.ALL || item.rateType === showRatingsType);
-        }).map((item, index) => {
-            return (
-                <li className="ratingselect-content-item" key={index}>
-                    <p className="item-header">
-                        <span className="ratetime">
-                                { formatDate(item.rateTime, 'yyyy-MM-dd hh:mm') }
-                        </span>
-                        <span className="username">
-                            {item.username}
-                            <img src={item.avatar} />
-                        </span>
-                    </p>
-                    <p className="item-text">
-                        <i className={item.rateType === this.POSITIVE ? 'icon-thumb_up' : 'icon-thumb_down'}></i>
-                        {item.text}
-                    </p>
-                </li>
-            );
-        });
-    }
-
     showRatingsCount = (index) => {
         const { ratings } = this.props;
 
@@ -63,8 +34,9 @@ export default class RatingSelect extends React.Component {
     }
 
     render() {
-        const { classify } = this.props;
+        const { classify, ratings } = this.props;
         const { showRatingsType, showAllRatingsText } = this.state;
+        let toggleFlag = true;
 
         return (
             <div className="ratingselect">
@@ -88,7 +60,30 @@ export default class RatingSelect extends React.Component {
                     <span className="ratingselect-toggle-text">只看有内容的评价</span>
                 </div>
                 <ul className="ratingselect-content">
-                    { this.renderRatingsContent() }
+                    { 
+                        ratings.filter(item => {
+                            toggleFlag = showAllRatingsText ? true : Boolean(item.text);
+                            return toggleFlag && (showRatingsType === this.ALL || item.rateType === showRatingsType);
+                        }).map((item, index) => {
+                            return (
+                                <li className="ratingselect-content-item" key={index}>
+                                    <p className="item-header">
+                                        <span className="ratetime">
+                                                { formatDate(item.rateTime, 'yyyy-MM-dd hh:mm') }
+                                        </span>
+                                        <span className="username">
+                                            {item.username}
+                                            <img src={item.avatar} />
+                                        </span>
+                                    </p>
+                                    <p className="item-text">
+                                        <i className={item.rateType === this.POSITIVE ? 'icon-thumb_up' : 'icon-thumb_down'}></i>
+                                        {item.text}
+                                    </p>
+                                </li>
+                            );
+                        })
+                    }
                 </ul>
             </div>
         );
