@@ -1,5 +1,5 @@
 import React from 'react';
-import connect from 'app/connect/index';
+import connect from 'app/connect';
 import SupportIcon from 'components/SupportIcon';
 import ShoppingCart from 'components/ShoppingCart';
 import Food from 'components/Food';

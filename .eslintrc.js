@@ -30,7 +30,8 @@ module.exports = {
     'no-trailing-spaces': 0,
     'handle-callback-err': 0,
     'no-multi-spaces': 0,
-    'operator-linebreak': 0
+    'operator-linebreak': 0,
+    'eol-last': 0
   },
   'globals': {
      'fetch': true
