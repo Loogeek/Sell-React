@@ -4,7 +4,7 @@ import * as types from '../constants/ActionTypes';
 
 function receiveSellerList(data) {
     return {
-        type: types.FETCH_SELLER_LIST,
+        type: types.RECEIVE_SELLER_LIST,
         data
     };
 }
@@ -17,7 +17,7 @@ export function fetchSellerList() {
             return resp.json();
         }).then(json => {
             if (json.errno === 0) {
-                return dispatch(receiveSellerList(json));
+                return dispatch(receiveSellerList(json.data));
             }
         }).catch((err, msg) => {
             console.error(msg);
@@ -29,7 +29,7 @@ export function fetchSellerList() {
 
 function receiveGoodsList(data) {
     return {
-        type: types.FETCH_GOODS_LIST,
+        type: types.RECEIVE_GOODS_LIST,
         data
     };
 }
@@ -42,7 +42,7 @@ export function fetchGoodsList() {
             return resp.json();
         }).then(json => {
             if (json.errno === 0) {
-                return dispatch(receiveGoodsList(json));
+                return dispatch(receiveGoodsList(json.data));
             }
         }).catch((err, msg) => {
             console.error(msg);
@@ -66,6 +66,29 @@ export function resetShoppingList(goods) {
         dispatch({
             type: types.RESET_SHOPPING_LIST,
             data: goods
+        });
+    };
+}
+
+// Ratings
+
+function receiveRatingsList(data) {
+    return {
+        type: types.RECEIVE_RATINGS_LIST,
+        data
+    };
+}
+
+export function fetchRatingsList() {
+    return (dispatch, getState) => {
+        const url = '/api/ratings';
+
+        return fetch(url).then(resp => {
+            return resp.json();
+        }).then(json => {
+            if (json.errno === 0) {
+                return dispatch(receiveRatingsList(json.data));          
+            }
         });
     };
 }

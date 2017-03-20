@@ -25,7 +25,7 @@ export default class Goods extends React.Component {
     componentWillMount = () => {
         this.props.actions.fetchGoodsList().then(() => {
             this.setState({
-                goods: this.props.goods && this.props.goods.data,
+                goods: this.props.goods,
                 loading: false
             });
             this.initScroll();

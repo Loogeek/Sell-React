@@ -1,0 +1,78 @@
+@import '../../../static/css/mixin.scss';
+
+.ratings {
+    overflow: auto;
+
+    &-overview {
+        display: flex;
+        padding: 18px 0;
+
+        &-left {
+            width: 137px;
+            padding: 6px 0;
+            @include border-right-1px(rgba(7, 17, 27, 0.1));
+            text-align: center;
+
+            .score {
+                margin-bottom: 6px;
+                line-height: 28px;
+                font-size: 2.4rem;
+                color: rgb(255, 153, 0);
+            }
+
+            .title {
+                margin-bottom: 8px;
+                line-height: 12px;
+                font-size: 1.2rem;
+                color: rgb(7, 17, 27);
+            }
+
+            .rank {
+                line-height: 10px;
+                font-size: 1rem;
+                color: rgb(147, 153, 159);
+            }
+        }
+
+        &-right {
+            flex: 1;
+            padding: 6px 0 6px 24px;
+
+            .title {
+                font-size: 1.2rem;
+                font-weight: 500;
+                color: rgb(7, 17, 27);
+            }
+
+            .score-wrapper {
+                margin-bottom: 8px;
+                font-size: 0;
+                height: 18px;
+                line-height: 18px;
+
+                .star {
+                    vertical-align: top;
+                    display: inline-block;
+                    margin: 0 12px;
+                }
+
+                .score {
+                    font-size: 1.2rem;
+                    color: rgb(255, 153, 0);    
+                }
+            }
+
+            .delivery-wrapper {
+                font-size: 0;
+                height: 18px;
+                line-height: 18px;
+
+                .delivery {
+                    margin-left: 12px;
+                    font-size: 1.2rem;
+                    color: rgb(147, 153, 159);
+                }
+            }
+        }
+    }
+}

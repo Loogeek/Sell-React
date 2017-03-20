@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const seller = (state = {}, action) => {
     switch (action.type) {
-        case 'FETCH_SELLER_LIST':
+        case 'RECEIVE_SELLER_LIST':
             return {...state, ...action.data};
         default:
             return state;
@@ -11,8 +11,8 @@ const seller = (state = {}, action) => {
 
 const goods = (state = [], action) => {
     switch (action.type) {
-        case 'FETCH_GOODS_LIST':
-            return {...state, ...action.data};
+        case 'RECEIVE_GOODS_LIST':
+            return [...state, ...action.data];
         case 'RESET_SHOPPING_LIST':
             action.data.map(good => {
                 good.foods.map(food => {
@@ -42,9 +42,19 @@ const goods = (state = [], action) => {
     }
 };
 
+const ratings = (state = [], action) => {
+    switch (action.type) {
+        case 'RECEIVE_RATINGS_LIST':
+            return [...state, ...action.data];
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     seller,
-    goods
+    goods,
+    ratings
 });
 
 export default rootReducer;
