@@ -40,8 +40,13 @@ export default class RatingList extends React.Component {
                                         <span className="delivery">{item.deliveryTime}</span>
                                     </div>
                                     <p className="rating-item-content-text">
-                                        <i className={item.rateType === this.POSITIVE ? 'icon-thumb_up' : 'icon-thumb_down'}></i>
                                         {item.text}
+                                    </p>
+                                    <p className="rating-item-content-recommend">
+                                        <i className={item.rateType === this.POSITIVE ? 'icon-thumb_up' : 'icon-thumb_down'}></i>
+                                        {
+                                            item.recommend.map((itemChild, index) => <span key={index} className="item-recommend">{itemChild}</span>)
+                                        }
                                     </p>
                                 </div>
                             </li>

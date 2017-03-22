@@ -70,6 +70,15 @@
     &-content {
         padding: 0 18px;
 
+         .icon-thumb_up {
+            margin-right: 4px;
+            color: #00a0dc;
+         }
+
+         .icon-thumb_down {
+            margin-right: 4px;
+            color: #93999f;
+         }
 
         .rating-item {
             display: flex;
@@ -86,6 +95,72 @@
                     width: 28px;
                     height: 28px;
                     border-radius: 50%;
+                }
+            }
+
+            &-content {
+                flex: 1;
+
+                &-header {
+                    margin-bottom: 4px;
+                    line-height: 12px;
+                    font-size: 1rem;
+                    color: rgb(7, 17, 27);
+
+                    .ratetime {
+                        float: right;
+                    }
+                }
+
+                &-score {
+                    margin-bottom: 6px;
+                    font-size: 0;
+
+                    .star {
+                        display: inline-block;
+                        margin-right: 6px;
+                        vertical-align: top;
+                    }
+
+                    .delivery {
+                        display: inline-block;
+                        line-height: 12px;
+                        font-size: 1rem;
+                        color: rgb(147, 153, 159);
+                    }
+                }
+
+                &-text {
+                    margin-bottom: 8px;
+                    line-height: 18px;
+                    color: rgb(7, 17, 27);
+                    font-size: 1.2rem;
+                }
+
+                &-recommend {
+                    line-height: 16px;
+                    font-size: 0;
+
+                    .icon-thumb_up {
+                        font-size: 1.2rem;
+                        margin-right: 8px;
+                    }
+
+                    .icon-thumb_down {
+                        font-size: 1.2rem;
+                         margin-right: 8px;
+                    }
+
+                    .item-recommend {
+                        display: inline-block;
+                        padding: 0 6px;
+                        border: 1px solid rgba(7, 17, 27, .1);
+                        border-radius: 1px;
+                        color: rgb(147, 153, 159);
+                        background: #fff;
+                        font-size: .9rem;
+                        margin: 0 8px 4px 0;
+                    }
                 }
             }
         }
@@ -111,16 +186,6 @@
                         vertical-align: middle;
                     }
                 }
-            }
-
-            .icon-thumb_up {
-                margin-right: 4px;
-                color: #00a0dc;
-            }
-
-            .icon-thumb_down {
-                margin-right: 4px;
-                color: #93999f;
             }
         }
     }
