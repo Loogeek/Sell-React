@@ -47,7 +47,7 @@ export default class FoodDetail extends React.Component {
                 <div className="split-line"></div>
                 <div className="food-detail-ratings">
                     <h3 className="detail-title">商品评价</h3>
-                    <RatingSelect ratings={food.ratings} />
+                    <RatingSelect ratings={food.ratings} type={2} />
                 </div>
             </section>
         );

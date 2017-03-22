@@ -170,17 +170,18 @@
         }
 
         &-info {
-            margin: 18px;
+            padding: 18px 0;
 
             .info-content {
                 line-height: 24px;
-                padding: 0 8px;
+                padding: 0 26px;
                 font-size: 1.2rem;
                 color: rgb(77, 85, 93);
             }
         }
 
         .detail-title {
+            padding-left: 18px;
             line-height: 14px;
             margin-bottom: 6px;
             font-size: 1.4rem;
@@ -188,7 +189,7 @@
         }
 
         &-ratings {
-            padding: 18px 18px 0;
+            padding-top: 18px;
         }
     }
 }

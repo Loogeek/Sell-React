@@ -41,7 +41,7 @@ export default class Ratings extends React.Component {
                 </div>
                 <div className="split-line"></div>
                 <div className="ratings-list">
-                    <RatingSelect ratings={ratings} classify={['全部', '推荐', '吐槽']} />
+                    <RatingSelect ratings={ratings} classify={['全部', '推荐', '吐槽']} type={1} />
                 </div>
             </section>
         );

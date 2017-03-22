@@ -1,9 +1,9 @@
 @import '../../../static/css/mixin.scss';
 
 .ratingselect {
-    
+
     &-type {
-        padding: 18px 0;
+        padding: 18px;
         @include border-bottom-1px(rgba(7, 17, 27, .1));
 
         &-block {
@@ -43,7 +43,7 @@
     }
 
     &-toggle {
-        padding: 12px 18px 12px 0rem;
+        padding: 12px 18px;
         line-height: 24px;
         @include border-bottom-1px(rgba(7, 17, 27, 0.1));
         color: rgb(147, 153, 159);
@@ -68,11 +68,33 @@
     }
 
     &-content {
-        &-item {
+        padding: 0 18px;
+
+
+        .rating-item {
+            display: flex;
+            padding: 18px 0;
+            @include border-bottom-1px(rgba(7, 17, 27, 0.1));
+
+            &-avatar {
+                width: 28px;
+                height: auto;
+                overflow: hidden;
+                margin-right: 12px;
+
+                > img {
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .food-rating-item {
             padding: 16px 0;
             @include border-bottom-1px(rgba(7, 17, 27, 0.1));
 
-            .item-header {
+            &-header {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 6px;
