@@ -1,0 +1,59 @@
+@import '../../../static/css/mixin.scss';
+
+.seller {
+    overflow: auto;
+
+    &-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 18px;
+        @include border-bottom-1px(rgba(7, 17, 27, 0.1));
+
+        &-content {
+            flex: 1;
+            padding-bottom: 18px;
+
+            .content-title {
+                margin-bottom: 8px;
+                line-height: 14px;
+                color: rgb(7, 17, 27);
+                font-size: 1.4rem;
+            }
+
+            .star {
+                display: inline-block;
+                margin-right: 8px;
+                vertical-align: text-top;
+            }
+
+            .text {
+                margin-right: 8px;
+            }
+        }
+
+        &-favorite {
+            width: 50px;
+            text-align: center;
+            padding-bottom: 18px;
+
+            .icon-favorite {
+                display: block;
+                margin-bottom: 4px;
+                line-height: 24px;
+                font-size: 2.4rem;
+                color: #d4d6d9;
+
+                &.active {
+                    color: rgb(240, 20, 20);
+                }
+
+                .text {
+                    line-height: 10px;
+                    font-size: 1rem;
+                    color: rgb(77, 85, 93);
+                }
+            }
+        }
+    }
+}
