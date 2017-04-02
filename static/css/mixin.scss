@@ -1,4 +1,4 @@
-@mixin border-bottom-1px($color) {
+@mixin border-bottom-1px($color: rgba(7, 17, 27, 0.1)) {
     position: relative;
 
     &:after {
@@ -12,7 +12,7 @@
     }
 }
 
-@mixin border-top-1px($color) {
+@mixin border-top-1px($color: rgba(7, 17, 27, 0.1)) {
     position: relative;
 
     &:after {
@@ -26,7 +26,7 @@
     }
 }
 
-@mixin border-left-1px($color) {
+@mixin border-left-1px($color: rgba(7, 17, 27, 0.1)) {
     position: relative;
 
     &:after {
@@ -40,7 +40,7 @@
     }
 }
 
-@mixin border-right-1px($color) {
+@mixin border-right-1px($color: rgba(7, 17, 27, 0.1)) {
     position: relative;
     
     &:after {

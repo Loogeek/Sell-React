@@ -55,3 +55,59 @@
         @include bg-image('./images/guarantee_2');
     }
 }
+
+.support-icon-3 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 4px;
+
+    &.decrease {
+        @include bg-image('./images/decrease_3');
+    }
+
+    &.discount {
+        @include bg-image('./images/discount_3');
+    }
+
+    &.special {
+        @include bg-image('./images/special_3');
+    }
+
+    &.invoice {
+        @include bg-image('./images/invoice_3');
+    }
+
+    &.guarantee {
+        @include bg-image('./images/guarantee_3');
+    }
+}
+
+.support-icon-4 {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: top;
+    margin-right: 4px;
+
+    &.decrease {
+        @include bg-image('./images/decrease_4');
+    }
+
+    &.discount {
+        @include bg-image('./images/discount_4');
+    }
+
+    &.special {
+        @include bg-image('./images/special_4');
+    }
+
+    &.invoice {
+        @include bg-image('./images/invoice_4');
+    }
+
+    &.guarantee {
+        @include bg-image('./images/guarantee_4');
+    }
+}

@@ -64,11 +64,11 @@ export default class Header extends React.Component {
                         </div>
                         <ul className="header-wrapper-supports">
                             {
-                                seller.supports && seller.supports.map(item => {
+                                seller.supports && seller.supports.map(support => {
                                     return (
-                                        <li className="support-item" key={item.type}>
-                                            <SupportIcon cls={2} type={item.type} />
-                                            <span className="text">{item.description}</span>
+                                        <li className="support-item" key={support.type}>
+                                            <SupportIcon cls={2} type={support.type} />
+                                            <span className="text">{support.description}</span>
                                         </li>
                                     );
                                 })
