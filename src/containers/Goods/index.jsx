@@ -96,64 +96,62 @@ export default class Goods extends React.Component {
         const { seller, actions } = this.props;
 
         return (
-            <div className="goods-food-wrp">
-                <div className="goods">
-                    <aside className="goods-menu" ref="goodsMenu">
-                        <ul>
-                            {
-                                goods.map((item, index) => {
-                                    return (
-                                        <li className={classnames('goods-menu-item', {'current': menuIndex === index})} key={index} onClick={this.selectMenu.bind(this, index)}>
-                                            <span className="name">
-                                                {
-                                                    item.type > 0 ? <SupportIcon type={item.type} cls={1} /> : null
-                                                }
-                                                {item.name}
-                                            </span>
-                                        </li>
-                                    );
-                                })
-                            }
-                        </ul>
-                    </aside>
-                    <section className="goods-detail" ref="goodsDetail">
-                        <ul>
-                            {
-                                goods.map((good, index) => {
-                                    return (
-                                        <li className="goods-detail-good" key={index}>
-                                            <h1 className="title">{good.name}</h1>
-                                            <ul>
-                                                {
-                                                    good.foods.map((food, index) => {
-                                                        return (
-                                                            <Food key={index}
-                                                                actions={actions}
-                                                                food={food}
-                                                                goods={goods}
-                                                                toggleFoodDetail={this.toggleFoodDetail}
-                                                            />
-                                                        );
-                                                    })
-                                                }
-                                            </ul>
-                                        </li>
-                                    );
-                                })
-                            }
-                        </ul>
-                        <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
-                    </section>
-                    {
-                        showFoodDetail ?
-                            <FoodDetail
-                                actions={actions}
-                                goods={goods}
-                                food={selectFood}
-                                toggleFoodDetail={this.toggleFoodDetail}
-                            /> : null
-                    }
-                </div>
+            <div className="goods">
+                <aside className="goods-menu" ref="goodsMenu">
+                    <ul>
+                        {
+                            goods.map((item, index) => {
+                                return (
+                                    <li className={classnames('goods-menu-item', {'current': menuIndex === index})} key={index} onClick={this.selectMenu.bind(this, index)}>
+                                        <span className="name">
+                                            {
+                                                item.type > 0 ? <SupportIcon type={item.type} cls={1} /> : null
+                                            }
+                                            {item.name}
+                                        </span>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                </aside>
+                <section className="goods-detail" ref="goodsDetail">
+                    <ul>
+                        {
+                            goods.map((good, index) => {
+                                return (
+                                    <li className="goods-detail-good" key={index}>
+                                        <h1 className="title">{good.name}</h1>
+                                        <ul>
+                                            {
+                                                good.foods.map((food, index) => {
+                                                    return (
+                                                        <Food key={index}
+                                                            actions={actions}
+                                                            food={food}
+                                                            goods={goods}
+                                                            toggleFoodDetail={this.toggleFoodDetail}
+                                                        />
+                                                    );
+                                                })
+                                            }
+                                        </ul>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
+                    <ShoppingCart seller={seller} goods={goods} actions={actions} menuIndex={menuIndex} onChangeCount={this.onChangeCount} />
+                </section>
+                {
+                    showFoodDetail ?
+                        <FoodDetail
+                            actions={actions}
+                            goods={goods}
+                            food={selectFood}
+                            toggleFoodDetail={this.toggleFoodDetail}
+                        /> : null
+                }
             </div>
         );
     }
