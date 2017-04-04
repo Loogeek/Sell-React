@@ -119,7 +119,7 @@ export default class ShoppingCart extends React.Component {
     render() {
         const { seller, goods }    = this.props;
         const { showShoppingList } = this.state;
-        const minPrice             = seller.data && seller.data.minPrice || 20;
+        const minPrice             = seller.minPrice || 20;
         const minPriceClass        = this.totalPrice < minPrice ? 'not-enough' : 'enough';
 
         return (
@@ -136,7 +136,7 @@ export default class ShoppingCart extends React.Component {
                                 }
                             </div>
                             <div className={classnames('total-price', {highlight: this.totalCount > 0})}>￥{this.totalPrice}</div>
-                            <div className="desc">另需配送费￥{seller.data && seller.data.deliveryPrice}元</div>
+                            <div className="desc">另需配送费￥{seller.deliveryPrice}元</div>
                         </div>
                         <div className="shopping-cart-content-right" onClick={this.showPrice}>
                             <div className={classnames('pay', minPriceClass)}>{this.renderMinPrice()}</div>

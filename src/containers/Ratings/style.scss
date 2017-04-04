@@ -1,6 +1,7 @@
 @import '../../../static/css/mixin.scss';
 
 .ratings {
+    flex: 1;
     overflow: auto;
 
     &-overview {

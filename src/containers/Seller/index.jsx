@@ -1,20 +1,38 @@
 import React from 'react';
+import classnames from 'classnames';
 import connect from 'app/connect';
 import Star from 'components/Star';
 import SupportIcon from 'components/SupportIcon';
+import { saveStorage, getStorage } from 'utils/store';
 import './style.scss';
 
 @connect
 export default class Seller extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            favorite: !!getStorage('favorite')
+        };
+    }
     
     componentWillMount() {
         if (!this.props.seller) {
             this.props.actions.fetchSellerList();
         }
     }
+
+    toggleFavorite = () => {
+        this.setState({
+            favorite: !this.state.favorite
+        }, () => {
+            saveStorage('favorite', this.state.favorite);
+        });
+    }
     
     render() {
         const { seller } = this.props;
+        const { favorite } = this.state;
 
         return (
             <div className="seller">
@@ -25,9 +43,9 @@ export default class Seller extends React.Component {
                             <span className="content-text">({seller.ratingCount})</span>
                             <span className="content-text">月售{seller.sellCount}单</span>
                     </div>
-                    <div className="seller-header-favorite">
-                        <i className="icon-favorite"></i>
-                        <span className="text">收藏</span>
+                    <div className="seller-header-favorite" onClick={this.toggleFavorite}>
+                        <i className={classnames('icon-favorite', {'active': favorite})}></i>
+                        <span className="text" >收藏</span>
                     </div>
                 </header>
                 <ul className="seller-remark">
@@ -60,7 +78,7 @@ export default class Seller extends React.Component {
                         {
                             seller.supports && seller.supports.map((support, index) => {
                                 return (
-                                    <li className="support-item" key={support.index}>
+                                    <li className="support-item" key={index}>
                                             <SupportIcon cls={4} type={support.type} />
                                             <span className="text">{support.description}</span>
                                     </li>
@@ -91,7 +109,7 @@ export default class Seller extends React.Component {
                         {
                             seller.infos && seller.infos.map((info, index) => {
                                 return (
-                                    <li className="info-item">
+                                    <li className="info-item" key={index}>
                                         {info}
                                     </li>
                                 );

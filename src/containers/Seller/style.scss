@@ -1,6 +1,7 @@
 @import '../../../static/css/mixin.scss';
 
 .seller {
+    flex: 1;
     overflow: auto;
 
     .title {
@@ -52,7 +53,9 @@
                 color: #d4d6d9;
 
                 &.active {
-                    color: rgb(240, 20, 20);
+                    &:before {
+                        color: rgb(240, 20, 20);
+                    }
                 }
 
                 .text {
