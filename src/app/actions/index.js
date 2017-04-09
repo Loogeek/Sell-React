@@ -10,18 +10,18 @@ function receiveSellerList(data) {
 }
 
 export function fetchSellerList() {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         const url = '/api/seller';
 
-        return fetch(url).then(resp => {
-            return resp.json();
-        }).then(json => {
-            if (json.errno === 0) {
-                return dispatch(receiveSellerList(json.data));
-            }
-        }).catch((err, msg) => {
-            console.error(msg);
-        });
+        try {
+            const resp = await (await fetch(url)).json();
+
+            if (resp.errno === 0) {
+                return dispatch(receiveSellerList(resp.data));
+            }            
+        } catch (error) {
+            console.warn(error);
+        }
     };
 }
 
@@ -35,18 +35,18 @@ function receiveGoodsList(data) {
 }
 
 export function fetchGoodsList() {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         const url = '/api/goods';
 
-        return fetch(url).then(resp => {
-            return resp.json();
-        }).then(json => {
-            if (json.errno === 0) {
-                return dispatch(receiveGoodsList(json.data));
-            }
-        }).catch((err, msg) => {
-            console.error(msg);
-        });
+        try {
+            const resp = await (await fetch(url)).json();
+
+            if (resp.errno === 0) {
+                return dispatch(receiveGoodsList(resp.data));
+            } 
+        } catch (error) {
+            console.warn(error);
+        }
     };
 }
 
@@ -80,15 +80,17 @@ function receiveRatingsList(data) {
 }
 
 export function fetchRatingsList() {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         const url = '/api/ratings';
 
-        return fetch(url).then(resp => {
-            return resp.json();
-        }).then(json => {
-            if (json.errno === 0) {
-                return dispatch(receiveRatingsList(json.data));          
+        try {
+            const resp = await (await fetch(url)).json();
+
+            if (resp.errno === 0) {
+                return dispatch(receiveRatingsList(resp.data));
             }
-        });
+        } catch (error) {
+            console.warn(error);
+        }
     };
 }
