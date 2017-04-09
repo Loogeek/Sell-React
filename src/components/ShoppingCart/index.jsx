@@ -68,7 +68,7 @@ export default class ShoppingCart extends React.Component {
         e.stopPropagation();
         const { seller } = this.props;
         const minPrice   = seller.data && seller.data.minPrice || 20;
-        const price      = this.totalPrice + (seller.data && seller.data.deliveryPrice);
+        const price      = this.totalPrice + (seller && seller.deliveryPrice);
 
         if (this.totalPrice < minPrice) {
             return;
