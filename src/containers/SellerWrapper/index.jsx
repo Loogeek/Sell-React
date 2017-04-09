@@ -16,13 +16,12 @@ export default class SellerWrapper extends React.Component {
         };
     }
 
-    componentWillMount() {
-        this.props.actions.fetchSellerList().then(() =>
-            this.setState({
-                seller: this.props.seller,
-                loading: false
-            })
-        );
+    componentWillMount = async () => {
+        await this.props.actions.fetchSellerList();
+        this.setState({
+            seller: this.props.seller,
+            loading: false
+        });
     }
 
     componentDidMount() {

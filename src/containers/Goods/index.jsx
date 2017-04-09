@@ -22,25 +22,22 @@ export default class Goods extends React.Component {
         this.goodHeightList = [0];
     }
 
-    componentWillMount = () => {
+    componentWillMount = async () => {
         if (this.props.goods.length > 0) {
-            this.setState({
+            await this.setState({
                 goods: this.props.goods,
                 loading: false
-            }, () => {
-                this.initScroll();
-                this.calculateHeight();
             });
+            this.initScroll();
+            this.calculateHeight();
         } else {
-            this.props.actions.fetchGoodsList().then(() => {
-                this.setState({
-                    goods: this.props.goods,
-                    loading: false
-                }, () => {
-                    this.initScroll();
-                    this.calculateHeight();
-                });
+            await this.props.actions.fetchGoodsList();
+            await this.setState({
+                goods: this.props.goods,
+                loading: false
             });
+            this.initScroll();
+            this.calculateHeight();
         }
     }
 
