@@ -1,7 +1,7 @@
 export function saveStorage(key, value) {
-    window.localStorage.setItem(key, value);
+    JSON.stringify(window.localStorage.setItem(key, value));
 }
 
 export function getStorage(key) {
-    return window.localStorage.getItem(key);
+    return JSON.parse(window.localStorage.getItem(key));
 }

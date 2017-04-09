@@ -12,7 +12,7 @@ const seller = (state = {}, action) => {
 const goods = (state = [], action) => {
     switch (action.type) {
         case 'RECEIVE_GOODS_LIST':
-            return [...state, ...action.data];
+            return [...action.data];
         case 'RESET_SHOPPING_LIST':
             action.data.map(good => {
                 good.foods.map(food => {

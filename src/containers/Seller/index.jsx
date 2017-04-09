@@ -45,7 +45,7 @@ export default class Seller extends React.Component {
                     </div>
                     <div className="seller-header-favorite" onClick={this.toggleFavorite}>
                         <i className={classnames('icon-favorite', {'active': favorite})}></i>
-                        <span className="text" >收藏</span>
+                        <span className="text" >{favorite ? '已收藏' : '收藏'}</span>
                     </div>
                 </header>
                 <ul className="seller-remark">

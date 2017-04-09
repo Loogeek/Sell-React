@@ -19,18 +19,29 @@ export default class Goods extends React.Component {
             selectFood: {},
             loading: true
         };
-        this.goodListHeight = [0];
+        this.goodHeightList = [0];
     }
 
     componentWillMount = () => {
-        this.props.actions.fetchGoodsList().then(() => {
+        if (this.props.goods.length > 0) {
             this.setState({
                 goods: this.props.goods,
                 loading: false
+            }, () => {
+                this.initScroll();
+                this.calculateHeight();
             });
-            this.initScroll();
-            this.calculateHeight();
-        });
+        } else {
+            this.props.actions.fetchGoodsList().then(() => {
+                this.setState({
+                    goods: this.props.goods,
+                    loading: false
+                }, () => {
+                    this.initScroll();
+                    this.calculateHeight();
+                });
+            });
+        }
     }
 
     initScroll = () => {
@@ -44,6 +55,10 @@ export default class Goods extends React.Component {
         });
 
         this.goodsDetail.on('scroll', (pos) => {
+            if (!pos.y) {
+                return;
+            }
+            this.goodsDetail.trigger('scrollCancel');
             this.scrollY = Math.abs(Math.round(pos.y));
             const index = this.calculateCurrentIndex();
 
@@ -57,18 +72,18 @@ export default class Goods extends React.Component {
 
     calculateHeight = () => {
         let height = 0;
-        const aGoodsList = Array.from(this.refs.goodsDetail.querySelectorAll('.goods-detail-good'));
+        const aGoodsList = [...this.refs.goodsDetail.querySelectorAll('.goods-detail-good')];
 
         aGoodsList.map(item => {
             height += item.clientHeight;
-            this.goodListHeight.push(height);
+            this.goodHeightList.push(height);
         });
     }
 
     calculateCurrentIndex = () => {
-        for (let i = 0; i < this.goodListHeight.length; i++) {
-            const height1 = this.goodListHeight[i];
-            const height2 = this.goodListHeight[i + 1];
+        for (let i = 0; i < this.goodHeightList.length; i++) {
+            const height1 = this.goodHeightList[i];
+            const height2 = this.goodHeightList[i + 1];
 
             if (!height2 || (this.scrollY >= height1 && this.scrollY < height2)) {
                 return i;

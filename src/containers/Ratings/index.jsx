@@ -8,7 +8,9 @@ import './style.scss';
 export default class Ratings extends React.Component {
     
     componentWillMount() {
-        this.props.actions.fetchRatingsList();
+        if (this.props.ratings.length === 0) {
+            this.props.actions.fetchRatingsList();
+        }
     }
     
     render() {
