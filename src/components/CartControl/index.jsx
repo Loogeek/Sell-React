@@ -5,19 +5,21 @@ import './style.scss';
 export default class CartControl extends React.Component {
     constructor(props) {
         super(props);
-        this.cacheCount = 0;
+        this.cacheCount = this.props.food.count || 0;
     }
 
     shouldComponentUpdate(nextProps) {
         return this.cacheCount !== nextProps.food.count;
     }
 
+    componentWillUpdate(nextProps) {
+        this.cacheCount = nextProps.food.count;    // 缓存当前的数量
+    }
+
     onChangeCount = (num, e) => {
         e.stopPropagation();
         
         const { goods, food, actions } = this.props;
-        this.cacheCount = food.count;            // 缓存当前的数量
-
         actions.setFoodCount(goods, food.id, num);
     }
 
