@@ -1,4 +1,5 @@
 import * as types from '../constants/ActionTypes';
+import axios from 'axios';
 
 // Seller
 
@@ -14,7 +15,7 @@ export function fetchSellerList() {
         const url = '/api/seller';
 
         try {
-            const resp = await (await fetch(url)).json();
+            const resp = await (await axios(url)).data;
 
             if (resp.errno === 0) {
                 return dispatch(receiveSellerList(resp.data));
@@ -39,7 +40,7 @@ export function fetchGoodsList() {
         const url = '/api/goods';
 
         try {
-            const resp = await (await fetch(url)).json();
+            const resp = await (await axios(url)).data;
 
             if (resp.errno === 0) {
                 return dispatch(receiveGoodsList(resp.data));
@@ -84,7 +85,7 @@ export function fetchRatingsList() {
         const url = '/api/ratings';
 
         try {
-            const resp = await (await fetch(url)).json();
+            const resp = await (await axios(url)).data;
 
             if (resp.errno === 0) {
                 return dispatch(receiveRatingsList(resp.data));

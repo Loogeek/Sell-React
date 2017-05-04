@@ -4,7 +4,6 @@ import SellerWrapper from 'containers/SellerWrapper';
 import Ratings from 'containers/Ratings';
 import Goods from 'containers/Goods';
 import Seller from 'containers/Seller';
-import 'whatwg-fetch';
 
 export default class App extends React.Component {
     render() {
