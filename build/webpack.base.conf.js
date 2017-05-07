@@ -1,13 +1,10 @@
 var path = require('path');
 var config = require('../config');
 var utils = require('./utils');
-var projectRoot = path.resolve(__dirname, '../');
 
-var env = process.env.NODE_ENV;
-// check env & config/index.js to decide weither to enable CSS Sourcemaps for the
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap);
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap);
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd;
+function resolve (dir) {
+  return path.join(__dirname, '..', dir);
+}
 
 module.exports = {
   entry: {
@@ -19,37 +16,34 @@ module.exports = {
     filename: '[name].js'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-    fallback: [path.join(__dirname, '../node_modules')],
+    extensions: ['.js', '.jsx'],
     alias: {
-      'src': path.resolve(__dirname, '../src'),
-      'app': path.resolve(__dirname, '../src/app'),
-      'assets': path.resolve(__dirname, '../src/assets'),
-      'components': path.resolve(__dirname, '../src/components'),
-      'containers': path.resolve(__dirname, '../src/containers'),
-      'utils': path.resolve(__dirname, '../src/utils')
+      'src': resolve('src'),
+      'app': resolve('src/app'),
+      'assets': resolve('src/assets'),
+      'components': resolve('src/components'),
+      'containers': resolve('src/containers'),
+      'utils': resolve('src/utils')
     }
   },
-  resolveLoader: {
-    fallback: [path.join(__dirname, '../node_modules')]
-  },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'eslint',
-        include: projectRoot,
-        exclude: /node_modules/
-      }
-    ],
-    loaders: [
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: resolve('src'),
+        exclude: /node_modules/,
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel',
-        include: projectRoot,
+        loader: 'babel-loader',
+        include: resolve(''),
         exclude: /node_modules/,
         query: {
-
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/babel-loader/
           // directory for faster rebuilds.
@@ -57,12 +51,8 @@ module.exports = {
         }
       },
       {
-        test: /\.json$/,
-        loader: 'json'
-      },
-      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -70,28 +60,12 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
     ]
-  },
-  eslint: {
-    formatter: require('eslint-friendly-formatter')
-  },
-  // We use PostCSS for autoprefixing only.
-  postcss: function() {
-    return [
-      require('autoprefixer')({
-        browsers: [
-          '>1%',
-          'last 4 versions',
-          'Firefox ESR',
-          'not ie < 9' // React doesn't support IE8 anyway
-        ]
-      })
-    ];
   }
 };

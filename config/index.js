@@ -1,4 +1,4 @@
-var path = require('path')
+var path = require('path');
 
 module.exports = {
   build: {
@@ -14,7 +14,11 @@ module.exports = {
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    port: 3000
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
   },
   dev: {
     env: require('./dev.env'),
@@ -29,4 +33,4 @@ module.exports = {
     // just be aware of this issue when enabling this option.
     cssSourceMap: false
   }
-}
+};
