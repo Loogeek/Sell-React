@@ -1,5 +1,5 @@
 {
   "presets": ["es2015", "stage-2", "react"],
-  "plugins": ["transform-decorators-legacy", "transform-runtime", "transform-async-to-generator"],
+  "plugins": ["transform-decorators-legacy", "transform-runtime", "transform-async-to-generator", "syntax-dynamic-import"],
   "comments": false
 }
